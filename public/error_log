@@ -1,0 +1,1 @@
+[10-Mar-2021 14:21:12 UTC] PHP Fatal error:  Cannot use Illuminate\Contracts\Auth\MustVerifyEmail as MustVerifyEmail because the name is already in use in /home/catp5836/laravel/app/Models/User.php on line 12
