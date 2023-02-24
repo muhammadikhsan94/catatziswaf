@@ -164,7 +164,7 @@
         var id = $(this).attr('id');
         $.ajax({
             method: "GET",
-            url: "/panzisda/donatur/detail/" + id,
+            url: "{{ url('panzisda/donatur/detail/') }}" + id,
             dataType: "json",
             success: function(data) {
                 $('#nama').val(data.nama);

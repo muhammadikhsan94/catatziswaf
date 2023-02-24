@@ -244,7 +244,7 @@
             var id = $(this).attr('id');
             $.ajax({
                 method: "GET",
-                url: "/manajerarea/transaksi/" + id,
+                url: "{{ url('manajerarea/transaksi/') }}" + id,
                 dataType: "json",
                 success: function(data) {
                     $('#id').val(id);
@@ -290,7 +290,7 @@
             var id = $(this).attr('id');
             $.ajax({
                 method: "GET",
-                url: "/manajerarea/transaksi/detail/" + id,
+                url: "{{ url('manajerarea/transaksi/detail/') }}" + id,
                 dataType: "json",
                 success: function(data) {
                     $('#id').val(id);

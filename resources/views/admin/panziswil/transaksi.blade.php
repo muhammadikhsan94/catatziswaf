@@ -405,7 +405,7 @@
             var id = $(this).attr('id');
             $.ajax({
                 method: "GET",
-                url: "/panziswil/transaksi/detail/" + id,
+                url: "{{ url('panziswil/transaksi/detail/') }}" + id,
                 dataType: "json",
                 success: function(data) {
                     $('#id').val(id);
@@ -499,7 +499,7 @@
 
         $('#ok-button').click(function() {
             $.ajax({
-                url: "/panziswil/transaksi/delete/" + trxId,
+                url: "{{ url('panziswil/transaksi/delete/') }}" + trxId,
                 method: "DELETE",
                 data: {
                     "_token": "{{ csrf_token() }}",

@@ -483,7 +483,7 @@
             var id = $(this).attr('id');
             $.ajax({
                 method: "GET",
-                url: "/panzisda/transaksi/detail/" + id,
+                url: "{{ url('panzisda/transaksi/detail/') }}" + id,
                 dataType: "json",
                 success: function(data) {
                     $('#id').val(id);

@@ -1,0 +1,33 @@
+Tata cara pengisian kolom:
+						
++ Kolom nama, no_hp, dan wilayah wajib diisi.
++ Kolom id_jabatan_duta diisi dengan nilai 5 sebagai duta zakat, jika tidak ada maka kosongkan saja.
++ Kolom id_jabatan_manajer_group diisi dengan nilai 4 sebagai manajer group, jika tidak ada maka kosongkan saja.
++ Kolom id_jabatan_manajer_area diisi dengan nilai 3 sebagai manajer area, jika tidak ada maka kosongkan saja.		
++ Kolom id_jabatan_panzisda diisi dengan nilai 2 sebagai panzisda, jika tidak ada maka kosongkan saja.	
++ Kolom id_jabatan_panziswil diisi dengan nilai 1 sebagai panziswil, jika tidak ada maka kosongkan saja.
++ Kolom id_jabatan_lazis diisi dengan nilai 6 sebagai lazis, jika tidak ada maka kosongkan saja.
++ kode group diisi dengan nilai 1 - 5				
++ Kolom wilayah diisi jika:					
+	1. Bandar Lampung						
+	2. Lampung Barat						
+	3. Lampung Selatan						
+	4. Lampung Tengah						
+	5. Lampung Timur						
+	6. Lampung Utara						
+	7. Mesuji						
+	8. Metro						
+	9. Pesawaran						
+	10. Pesisir Barat						
+	11. Pringsewu						
+	12. Tanggamus						
+	13. Tulang Bawang						
+	14. Tulang Bawang Barat						
+	15. Way Kanan		
++ Kolom lembaga diisi jika kolom id_jabatan_lazis tidak kosong, maka format pengisian nya adalah:
+	1. IZI
+	2. LAZDAI
+	3. YASMIN
+	4. YASLAM
+	5. YASMAN
+	6. DANA MANDIRI				

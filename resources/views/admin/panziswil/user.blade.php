@@ -240,6 +240,8 @@
 
         var table = $('#tabel-user').DataTable({
             dom: 'lfrtip',
+            processing: true,
+            serverSide: true,
             "language": {
                 "sEmptyTable": "DATA KOSONG ATAU TIDAK DITEMUKAN !",
                 "sLengthMenu": "Tampilkan _MENU_ records",
@@ -291,7 +293,7 @@
 
         $('#ok-button').click(function() {
             $.ajax({
-                url: "/panziswil/user/delete/" + user_id,
+                url: "{{ url('panziswil/user/delete/') }}" + user_id,
                 method: "DELETE",
                 data: {
                     "_token": "{{ csrf_token() }}",

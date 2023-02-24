@@ -530,8 +530,8 @@ class PanzisdaController extends Controller
 					->where('users.id_wilayah', Auth::user()->id_wilayah)
 					->whereNotIn('jabatan.nama_jabatan', ['PANZISDA', 'PANZISWIL', 'LAZIS'])
 					->where('users.no_punggung', '!=', '000001')
-					->orderBy(DB::raw('role.id_jabatan IS NULL'), 'DESC')
-					->orderBy(DB::raw('role.id_atasan IS NULL'), 'DESC')
+					// ->orderBy(DB::raw('role.id_jabatan IS NULL'), 'DESC')
+					// ->orderBy(DB::raw('role.id_atasan IS NULL'), 'DESC')
 					->orderBy('users.id', 'ASC')
 					->groupBy('users.id','users.no_punggung','users.nama', 'users.no_hp')
 					->get();

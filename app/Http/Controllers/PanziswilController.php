@@ -637,9 +637,9 @@ class PanziswilController extends Controller
 					->leftJoin('jabatan','jabatan.id','=','role.id_jabatan')
 					->select('users.id', 'users.nama', 'users.no_punggung', DB::raw('group_concat(jabatan.nama_jabatan SEPARATOR ",") as jabatan'), 'wilayah.nama_wilayah as wilayah', DB::raw('group_concat(IF(role.id_atasan IS NULL, "null", role.id_atasan)) as id_atasan'), DB::raw('group_concat(IF(role.id_group IS NULL, "null", role.id_group)) as id_group'), DB::raw('group_concat(IF(role.id_lembaga IS NULL, "null", role.id_lembaga)) as id_lembaga'))
 					->where('users.no_punggung', '!=', '000001')
-					->orderBy(DB::raw('role.id_jabatan IS NULL'), 'DESC')
-					->orderBy(DB::raw('role.id_atasan IS NULL'), 'DESC')
 					->orderBy('users.id', 'ASC')
+					// ->orderBy(DB::raw('role.id_jabatan IS NULL'), 'DESC')
+					// ->orderBy(DB::raw('role.id_atasan IS NULL'), 'DESC')
 					->groupBy('users.id','users.no_punggung','users.nama','wilayah.nama_wilayah')
 					->get();
 

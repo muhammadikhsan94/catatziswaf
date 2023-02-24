@@ -174,7 +174,7 @@
             var id = $(this).attr('id');
             $.ajax({
                 method: "GET",
-                url: "/manajer/user/detail/" + id,
+                url: "{{ url('manajer/user/detail/') }}" + id,
                 dataType: "json",
                 success: function(data) {
                     $('#id').val(id);

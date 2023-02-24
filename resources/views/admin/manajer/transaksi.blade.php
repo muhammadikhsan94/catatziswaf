@@ -398,7 +398,7 @@
             var id = $(this).attr('id');
             $.ajax({
                 method: "GET",
-                url: "/manajer/transaksi/detail/" + id,
+                url: "{{ url('manajer/transaksi/detail/') }}" + id,
                 dataType: "json",
                 success: function(data) {
                     $('#id').val(id);

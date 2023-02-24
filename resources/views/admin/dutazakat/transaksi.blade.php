@@ -274,7 +274,7 @@
             var id = $(this).attr('id');
             $.ajax({
                 method: "GET",
-                url: "/duta/transaksi/detail/" + id,
+                url: "{{ url('duta/transaksi/detail/') }}" + id,
                 dataType: "json",
                 success: function(data) {
                     $('#print').attr('href', '/kuitansi/'+data.id+'.pdf');
@@ -346,7 +346,7 @@
 
         $('#ok-button').click(function() {
             $.ajax({
-                url: "/duta/transaksi/delete/" + user_id,
+                url: "{{ url('duta/transaksi/delete/') }}" + user_id,
                 method: "DELETE",
                 data: {
                     "_token": "{{ csrf_token() }}",

@@ -138,7 +138,7 @@
 
         $('#ok-button').click(function() {
             $.ajax({
-                url: "/panzisda/user/delete/" + user_id,
+                url: "{{ url('panzisda/user/delete/') }}" + user_id,
                 method: "DELETE",
                 data: {
                     "_token": "{{ csrf_token() }}",

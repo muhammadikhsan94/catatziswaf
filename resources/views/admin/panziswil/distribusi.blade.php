@@ -317,7 +317,7 @@
 
         $('#ok-button').click(function() {
             $.ajax({
-                url: "/panziswil/distribusi/delete/" + user_id,
+                url: "{{ url('panziswil/distribusi/delete/') }}" + user_id,
                 method: "DELETE",
                 data: {
                     "_token": "{{ csrf_token() }}",
@@ -351,7 +351,7 @@
             var id = $(this).attr('id');
             $.ajax({
                 method: "GET",
-                url: "/panziswil/distribusi/edit/" + id,
+                url: "{{ url('panziswil/distribusi/edit/') }}" + id,
                 dataType: "json",
                 success: function(data) {
                     $('#id').val(id);

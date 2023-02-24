@@ -191,7 +191,7 @@
 
         $('#ok-button').click(function() {
             $.ajax({
-                url: "/panziswil/wilayah/delete/" + user_id,
+                url: "{{ url('panziswil/wilayah/delete/') }}" + user_id,
                 method: "DELETE",
                 data: {
                     "_token": "{{ csrf_token() }}",
@@ -224,7 +224,7 @@
             var id = $(this).attr('id');
             $.ajax({
                 method: "GET",
-                url: "/panziswil/wilayah/edit/" + id,
+                url: "{{ url('panziswil/wilayah/edit/') }}" + id,
                 dataType: "json",
                 success: function(data) {
                     $('#id').val(id);
