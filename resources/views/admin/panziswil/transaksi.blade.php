@@ -338,7 +338,7 @@
                 {"className": "dt-center", "targets": [0, 7, 8, 9]}
             ],
             ajax: {
-                url: "{{ url('panziswil/transaksi/getdata/0') }}",
+                url: "{{ url('transaksi/getdata/0') }}",
             },
             columns: [{
                 data: "id",
@@ -397,7 +397,7 @@
 
         $('select').selectpicker();
         $('#status_transaksi').change(function() {
-            table.ajax.url('panziswil/transaksi/getdata/'+$(this).val()).load();
+            table.ajax.url('transaksi/getdata/'+$(this).val()).load();
         });
         $('#status_transaksi').trigger("change");
 
