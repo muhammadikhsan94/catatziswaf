@@ -90,7 +90,7 @@
             </div>
 
             <div class="modal-footer">
-                <a type="button" id="batal" name="batal" class="btn btn-secondary" href="{{url('/')}}">Batal</a>
+                <a type="button" id="batal" name="batal" class="btn btn-secondary" href="{{url('')}}">Batal</a>
                 <button type="submit" class="submit btn btn-primary">Simpan</button>
             </div>
         </div>
@@ -151,7 +151,7 @@
         });
 
         $(document).on('click', '.batal', function() {
-            window.location = "/";
+            window.location = "";
         });
 
         //Submit
@@ -170,7 +170,7 @@
                     alert("Data berhasil di update!");
                     html = '<div class="alert alert-success">' + data + '</div>';
                     $('#editUser')[0].reset();
-                    window.location.replace("{{url('/')}}");
+                    window.location.replace("{{url('')}}");
                 },
                 error: function (data) {
                     var html = '';

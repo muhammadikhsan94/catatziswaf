@@ -80,7 +80,7 @@
                 {"className": "dt-right", "targets": [2, 3, 4, 5]}
             ],
             ajax: {
-                url: "{{ url('/lazis/laporan/validasi/getdata') }}",
+                url: "{{ url('lazis/laporan/validasi/getdata') }}",
             },
             columns: [{
                 data: "id",

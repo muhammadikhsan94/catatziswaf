@@ -92,7 +92,7 @@
                 {"className": "dt-right", "targets": [6]}
             ],
             ajax: {
-                url: "{{ url('/duta/laporan/transaksi') }}",
+                url: "{{ url('duta/laporan/transaksi') }}",
             },
             columns: [{
                 data: "id",

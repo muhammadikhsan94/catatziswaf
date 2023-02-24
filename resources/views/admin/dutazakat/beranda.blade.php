@@ -11,7 +11,7 @@
 	<div class="col-md-3">
 		<div class="alert alert-success">
 			<h5>SURAT TUGAS:</h5>
-			<a href="{{ url('/surat_tugas/izi/'.Auth::user()->id) }}" target=new type="button" class="btn btn-info btn-xs">IZI</a>&nbsp;<a href="{{ url('/surat_tugas/lazdai/'.Auth::user()->id) }}" target=new type="button" class="btn btn-info btn-xs">LAZDAI</a>
+			<a href="{{ url('surat_tugas/izi/'.Auth::user()->id) }}" target=new type="button" class="btn btn-info btn-xs">IZI</a>&nbsp;<a href="{{ url('surat_tugas/lazdai/'.Auth::user()->id) }}" target=new type="button" class="btn btn-info btn-xs">LAZDAI</a>
 		</div>
 	</div>
 </div>

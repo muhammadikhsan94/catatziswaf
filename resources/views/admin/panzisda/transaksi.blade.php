@@ -428,7 +428,7 @@
 
         $('select').selectpicker();
         $('#status_transaksi').change(function() {
-            table.ajax.url('/panzisda/transaksi/getdata/'+$(this).val()).load();
+            table.ajax.url('panzisda/transaksi/getdata/'+$(this).val()).load();
         });
         $('#status_transaksi').trigger("change");
 
@@ -483,7 +483,7 @@
             var id = $(this).attr('id');
             $.ajax({
                 method: "GET",
-                url: "{{ url('panzisda/transaksi/detail/') }}" + id,
+                url: "{{ url('panzisda/transaksi/detail') }}/" + id,
                 dataType: "json",
                 success: function(data) {
                     $('#id').val(id);

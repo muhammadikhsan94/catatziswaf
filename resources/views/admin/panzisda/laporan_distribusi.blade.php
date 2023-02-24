@@ -97,7 +97,7 @@
                     {"className": "dt-body-right", "targets": [2,3,4,5,6,7,8]}
                 ],
                 ajax: {
-                    url: "{{ url('/panzisda/laporan/distribusi/getdata') }}",
+                    url: "{{ url('panzisda/laporan/distribusi/getdata') }}",
                 },
                 columns: [
                     { data: "id", render: function (data, type, row, meta) { return meta.row + meta.settings._iDisplayStart + 1; } },
@@ -189,7 +189,7 @@
                     {"className": "dt-right", "targets": [2,3,4,5,6,7,8,9]}
                 ],
                 ajax: {
-                    url: "{{ url('/panzisda/laporan/distribusi/getdata') }}",
+                    url: "{{ url('panzisda/laporan/distribusi/getdata') }}",
                 },
                 columns: [
                     { data: "id", render: function (data, type, row, meta) { return meta.row + meta.settings._iDisplayStart + 1; } },

@@ -230,7 +230,7 @@
                 "sSearch": "Cari Data:",
             },
             ajax: {
-                url: "{{ url('/panziswil/distribusi/getdata') }}",
+                url: "{{ url('panziswil/distribusi/getdata') }}",
             },
             "columnDefs": [
                 {"className": "dt-center", "targets": [0, 2, 3, 4, 5, 6, 7, 8]}
@@ -317,7 +317,7 @@
 
         $('#ok-button').click(function() {
             $.ajax({
-                url: "{{ url('panziswil/distribusi/delete/') }}" + user_id,
+                url: "{{ url('panziswil/distribusi/delete') }}/" + user_id,
                 method: "DELETE",
                 data: {
                     "_token": "{{ csrf_token() }}",
@@ -351,7 +351,7 @@
             var id = $(this).attr('id');
             $.ajax({
                 method: "GET",
-                url: "{{ url('panziswil/distribusi/edit/') }}" + id,
+                url: "{{ url('panziswil/distribusi/edit') }}/" + id,
                 dataType: "json",
                 success: function(data) {
                     $('#id').val(id);

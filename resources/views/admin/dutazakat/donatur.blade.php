@@ -325,7 +325,7 @@
                 "sSearch": "Cari Data/Filter:",
             },
             ajax: {
-                url: "{{ url('/duta/donatur/getdata') }}",
+                url: "{{ url('duta/donatur/getdata') }}",
             },
             "columnDefs": [
                 {"className": "dt-center", "targets": [0, 1, 4, 5, 7]}
@@ -371,7 +371,7 @@
             var id = $(this).attr('id');
             $.ajax({
                 method: "GET",
-                url: "{{ url('duta/donatur/detail/') }}" + id,
+                url: "{{ url('duta/donatur/detail') }}/" + id,
                 dataType: "json",
                 success: function(data) {
                     $('#nama').val(data.nama);
@@ -425,7 +425,7 @@
             var id = $(this).attr('id');
             $.ajax({
                 method: "GET",
-                url: "{{ url('duta/donatur/edit/') }}" + id,
+                url: "{{ url('duta/donatur/edit') }}/" + id,
                 dataType: "json",
                 success: function(data) {
                     $('.selectpicker').selectpicker('refresh');

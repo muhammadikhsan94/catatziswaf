@@ -669,7 +669,7 @@
                         var html = '';
                         alert("Data berhasil disimpan!")
                         html = '<div class="alert alert-default">' + data + '</div>';
-                        window.location.replace("{{url('/duta/transaksi')}}");
+                        window.location.replace("{{url('duta/transaksi')}}");
                     },
                     error: function (data) {
                         var html = '';

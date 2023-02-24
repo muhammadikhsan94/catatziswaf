@@ -45,7 +45,7 @@
                     <div class="panel-heading"><center>Register</center></div>
                     <div class="panel-body">
      
-                        <form id="formRegister" class="form-horizontal" method="post" action="{{url('/daftar/simpan')}}" enctype="multipart/form-data">
+                        <form id="formRegister" class="form-horizontal" method="post" action="{{url('daftar/simpan')}}" enctype="multipart/form-data">
 
                             @if ($message = Session::get('errors'))
                             <div class="alert alert-warning alert-block">
@@ -118,7 +118,7 @@
 
                             <div class="box-footer">
                                 <button type="submit" class="btn btn-primary">Simpan</button>&nbsp;
-                                <a type="button" href="{{url('/')}}" class="btn btn-secondary">Kembali</a>
+                                <a type="button" href="{{url('')}}" class="btn btn-secondary">Kembali</a>
                             </div>
                         </form>
                     </div>

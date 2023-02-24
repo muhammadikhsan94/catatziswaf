@@ -87,7 +87,7 @@
                 {"className": "dt-right", "targets": [9]}
             ],
             ajax: {
-                url: "{{ url('/panzisda/laporan/rekonsiliasi/getdata') }}",
+                url: "{{ url('panzisda/laporan/rekonsiliasi/getdata') }}",
             },
             columns: [{
                 data: "id",

@@ -82,7 +82,7 @@
                 {"className": "dt-right", "targets": [2, 3, 4, 5, 6]}
             ],
             ajax: {
-                url: "{{ url('/panziswil/laporan/validasi/lembaga/getdata') }}",
+                url: "{{ url('panziswil/laporan/validasi/lembaga/getdata') }}",
             },
             columns: [{
                 data: "id",

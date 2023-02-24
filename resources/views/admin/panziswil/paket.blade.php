@@ -132,7 +132,7 @@
                 "sSearch": "Cari Data:",
             },
             ajax: {
-                url: "{{ url('/panziswil/paket/getdata') }}",
+                url: "{{ url('panziswil/paket/getdata') }}",
             },
             columns: [{
                 data: "id",
@@ -191,7 +191,7 @@
 
         $('#ok-button').click(function() {
             $.ajax({
-                url: "{{ url('panziswil/paket/delete/') }}" + user_id,
+                url: "{{ url('panziswil/paket/delete') }}/" + user_id,
                 method: "DELETE",
                 data: {
                     "_token": "{{ csrf_token() }}",
@@ -224,7 +224,7 @@
             var id = $(this).attr('id');
             $.ajax({
                 method: "GET",
-                url: "{{ url('panziswil/paket/edit/') }}" + id,
+                url: "{{ url('panziswil/paket/edit') }}/" + id,
                 dataType: "json",
                 success: function(data) {
                     $('#id').val(id);

@@ -140,7 +140,7 @@
                 "sSearch": "Cari Data/Filter:",
             },
             ajax: {
-                url: "{{ url('/panziswil/laporan/getdata') }}",
+                url: "{{ url('panziswil/laporan/getdata') }}",
             },
             columns: [{
                 data: 'no_punggung',
@@ -180,7 +180,7 @@
                 {"className": "dt-center", "targets": [0, 2, 3, 4]}
             ],
             ajax: {
-                url: "{{ url('/panziswil/laporan/transaksi') }}",
+                url: "{{ url('panziswil/laporan/transaksi') }}",
             },
             columns: [{
                 data: "id",
@@ -233,7 +233,7 @@
                 {"className": "dt-center", "targets": [0, 4]}
             ],
             ajax: {
-                url: "{{ url('/panziswil/laporan/transaksi/jenis-ziswaf') }}",
+                url: "{{ url('panziswil/laporan/transaksi/jenis-ziswaf') }}",
             },
             columns: [{
                 data: "id",

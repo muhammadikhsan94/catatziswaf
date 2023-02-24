@@ -186,7 +186,7 @@
                     alert("Data berhasil ditambahkan !");
                     html = '<div class="alert alert-success">' + data + '</div>';
                     $('#tambah_user')[0].reset();
-                    window.location.replace("{{url('/panzisda/user')}}");
+                    window.location.replace("{{url('panzisda/user')}}");
                 },
                 error: function (data) {
                     var html = '';

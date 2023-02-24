@@ -82,8 +82,8 @@
             </form>
         </div>
         <div class="row">
-            <p class="login-box-msg">Belum memiliki akun? Silahkan <a type="button" href="{{url('/daftar')}}" class="btn btn-primary btn-xs">DAFTAR</a></p>
-            <p class="login-box-msg"><a href="{{ url('/forgot-password') }}">Lupa Password?</a></p>
+            <p class="login-box-msg">Belum memiliki akun? Silahkan <a type="button" href="{{url('daftar')}}" class="btn btn-primary btn-xs">DAFTAR</a></p>
+            <p class="login-box-msg"><a href="{{ url('forgot-password') }}">Lupa Password?</a></p>
         </div>
         <!-- /.login-box-body -->
     </div>

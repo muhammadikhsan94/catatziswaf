@@ -74,7 +74,7 @@
                 {"className": "dt-center", "targets": [0, 2, 3, 4]}
             ],
             ajax: {
-                url: "{{ url('/panziswil/laporan/wilayah/getdata') }}",
+                url: "{{ url('panziswil/laporan/wilayah/getdata') }}",
             },
             columns: [{
                 data: "id",

@@ -203,7 +203,7 @@
                 "sSearch": "Cari Data:",
             },
             ajax: {
-                url: "{{ url('/panziswil/lembaga/getdata') }}",
+                url: "{{ url('panziswil/lembaga/getdata') }}",
             },
             columns: [{
                 data: "id",
@@ -312,7 +312,7 @@
 
         $('#ok-button').click(function() {
             $.ajax({
-                url: "{{ url('panziswil/lembaga/delete/') }}" + user_id,
+                url: "{{ url('panziswil/lembaga/delete') }}/" + user_id,
                 method: "DELETE",
                 data: {
                     "_token": "{{ csrf_token() }}",
@@ -345,7 +345,7 @@
             var id = $(this).attr('id');
             $.ajax({
                 method: "GET",
-                url: "{{ url('panziswil/lembaga/edit/') }}" + id,
+                url: "{{ url('panziswil/lembaga/edit') }}/" + id,
                 dataType: "json",
                 success: function(data) {
                     $('#ubah_wilayah').show();

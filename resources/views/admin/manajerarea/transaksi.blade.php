@@ -201,7 +201,7 @@
                 "sSearch": "Cari Data:",
             },
             ajax: {
-                url: "{{ url('/manajerarea/transaksi/getdata') }}",
+                url: "{{ url('manajerarea/transaksi/getdata') }}",
             },
             columns: [{
                 data: "transaks.id",
@@ -244,7 +244,7 @@
             var id = $(this).attr('id');
             $.ajax({
                 method: "GET",
-                url: "{{ url('manajerarea/transaksi/') }}" + id,
+                url: "{{ url('manajerarea/transaksi') }}/" + id,
                 dataType: "json",
                 success: function(data) {
                     $('#id').val(id);
@@ -290,7 +290,7 @@
             var id = $(this).attr('id');
             $.ajax({
                 method: "GET",
-                url: "{{ url('manajerarea/transaksi/detail/') }}" + id,
+                url: "{{ url('manajerarea/transaksi/detail') }}/" + id,
                 dataType: "json",
                 success: function(data) {
                     $('#id').val(id);

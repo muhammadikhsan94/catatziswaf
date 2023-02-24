@@ -16,7 +16,7 @@
 
     <div class="box-body">
         <div class="col-md-6" style="margin-bottom: 20px;">
-            <a class="btn btn-primary btn-md" href="{{url('/duta/transaksi/tambah')}}">
+            <a class="btn btn-primary btn-md" href="{{url('duta/transaksi/tambah')}}">
                 <i class="fa fa-plus"> Tambah Transaksi </i>
             </a>
         </div>
@@ -213,7 +213,7 @@
                 "sSearch": "Cari Data/Filter:",
             },
             ajax: {
-                url: "{{ url('/duta/transaksi/getdata') }}",
+                url: "{{ url('duta/transaksi/getdata') }}",
             },
             "order": [[ 7, "asc" ]],
             "columnDefs": [
@@ -274,7 +274,7 @@
             var id = $(this).attr('id');
             $.ajax({
                 method: "GET",
-                url: "{{ url('duta/transaksi/detail/') }}" + id,
+                url: "{{ url('duta/transaksi/detail') }}/" + id,
                 dataType: "json",
                 success: function(data) {
                     $('#print').attr('href', '/kuitansi/'+data.id+'.pdf');
@@ -329,7 +329,7 @@
 
         $(document).on('click', '.edit', function() {
             var id = $(this).attr('id');
-            window.location = "/duta/transaksi/edit/"+id;
+            window.location = "{{ url('duta/transaksi/edit') }}/"+id;
         });
         
         $(document).on('click', '.bukti', function() {
@@ -346,7 +346,7 @@
 
         $('#ok-button').click(function() {
             $.ajax({
-                url: "{{ url('duta/transaksi/delete/') }}" + user_id,
+                url: "{{ url('duta/transaksi/delete') }}/" + user_id,
                 method: "DELETE",
                 data: {
                     "_token": "{{ csrf_token() }}",

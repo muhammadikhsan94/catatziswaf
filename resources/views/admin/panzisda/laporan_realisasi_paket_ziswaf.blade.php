@@ -83,7 +83,7 @@
                     {"className": "dt-right", "targets": [2, 3, 4]}
                 ],
                 ajax: {
-                    url: "{{ url('/panzisda/laporan/realisasi-paketziswaf/getdata') }}",
+                    url: "{{ url('panzisda/laporan/realisasi-paketziswaf/getdata') }}",
                 },
                 columns: [
                     { data: "id", render: function (data, type, row, meta) { return meta.row + meta.settings._iDisplayStart + 1; } },
@@ -138,7 +138,7 @@
                     {"className": "dt-right", "targets": [2, 3, 4, 5]}
                 ],
                 ajax: {
-                    url: "{{ url('/panzisda/laporan/realisasi-paketziswaf/getdata') }}",
+                    url: "{{ url('panzisda/laporan/realisasi-paketziswaf/getdata') }}",
                 },
                 columns: [
                     { data: "id", render: function (data, type, row, meta) { return meta.row + meta.settings._iDisplayStart + 1; } },

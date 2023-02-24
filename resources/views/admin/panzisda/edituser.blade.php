@@ -185,7 +185,7 @@
         ?>;
 
         $(document).on('click', '.batal', function() {
-            window.location = "/panzisda/user/";
+            window.location = "{{ url('panzisda/user') }}";
         });
 
         var tmp = <?php echo json_encode($data['tmp']); ?>;
@@ -275,7 +275,7 @@
                     alert("Data berhasil diupdate!");
                     html = '<div class="alert alert-success">' + data + '</div>';
                     $('#editUser')[0].reset();
-                    window.location.replace("{{url('/panzisda/user')}}");
+                    window.location.replace("{{url('panzisda/user')}}");
                 },
                 error: function (data) {
                     var html = '';
