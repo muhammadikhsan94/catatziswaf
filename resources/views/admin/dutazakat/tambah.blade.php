@@ -384,8 +384,11 @@
             var lembaga = $(this).val();
 
             var lembaga_dm = <?php echo json_encode($data['lembaga']->whereIn('nama_lembaga', ['dana mandiri', 'DANA MANDIRI'])->first()); ?>;
+            if(lembaaga_dm!=null){
+                lembaga_dm = lembaga_dm.id;
+            }
 
-            if (lembaga == lembaga_dm.id) {
+            if (lembaga == lembaga_dm) {
                 $('select[name=jenis_transaksi]').val(lapor.id);
                 $('#jenis_transaksi').attr('required', '');
                 $('#tambah_barang').hide();
