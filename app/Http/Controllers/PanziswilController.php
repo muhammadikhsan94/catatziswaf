@@ -788,7 +788,7 @@ class PanziswilController extends Controller
 		if(!$user->save()) {
 			return redirect('/panziswil/user')->with(['errors' => 'Gagal reset password!']);
 		} else {
-			Mail::to($user->email)->send(new ResetPasswordNotify($user));
+			//Mail::to($user->email)->send(new ResetPasswordNotify($user));
 			return redirect('/panziswil/user')->with(['success' => 'Password pengguna "'.$data->no_punggung.'" berhasil di reset!']);
 		}
 	}

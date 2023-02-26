@@ -216,7 +216,7 @@ class HomeController extends Controller
         }
         $user->save();
 
-        Mail::to($user->email)->send(new UpdateProfilNotify($user));
+        //Mail::to($user->email)->send(new UpdateProfilNotify($user));
     }
 
     public function kalkulator()

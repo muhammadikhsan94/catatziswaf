@@ -85,7 +85,7 @@ class UserImport implements ToCollection, WithHeadingRow
                     ]);
                 };
                 
-                // Mail::to($user->email)->send(new MailNotify($user));
+                // //Mail::to($user->email)->send(new MailNotify($user));
                 dispatch(new SendMailJob($user->email, new MailNotify($user)));
             }
             

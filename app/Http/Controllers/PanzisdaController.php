@@ -351,7 +351,7 @@ class PanzisdaController extends Controller
 			}
 		}
 		
-		Mail::to($user->email)->send(new MailNotify($user));
+		//Mail::to($user->email)->send(new MailNotify($user));
 
 		return response()->json(['success' => 'success stored!']);
 	}
@@ -720,7 +720,7 @@ class PanzisdaController extends Controller
 		if(!$user->save()) {
 			return redirect('/panzisda/user')->with(['errors' => 'Gagal reset password!']);
 		} else {
-			// Mail::to($user->email)->send(new ResetPasswordNotify($user));
+			// //Mail::to($user->email)->send(new ResetPasswordNotify($user));
 			return redirect('/panzisda/user')->with(['success' => 'Password pengguna "'.$user->no_punggung.'" berhasil di reset!']);
 		}
 	}

@@ -40,7 +40,7 @@ class RegisterController extends Controller
         $role->id_users = $user->id;
         $role->save();
         
-        Mail::to($user->email)->send(new RegisterSuccess($user));
+        //Mail::to($user->email)->send(new RegisterSuccess($user));
         
         return redirect('/login')->with(['success' => 'Pendaftaran Berhasil, Silahkan Login!']);
     }

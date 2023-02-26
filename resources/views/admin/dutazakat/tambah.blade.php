@@ -398,7 +398,7 @@
             $('.selectpicker').selectpicker('refresh');
 
             $.ajax({
-                url: '/duta/rekening/lembaga/'+lembaga,
+                url: "{{ url('duta/rekening/lembaga') }}/"+lembaga,
                 type: "GET",
                 dataType: "JSON",
                 success:function(data){
