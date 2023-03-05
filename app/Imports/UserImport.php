@@ -23,21 +23,20 @@ class UserImport implements ToCollection, WithHeadingRow
 
     public function collection(Collection $rows)
     {
-        
         foreach ($rows as $row)
         {
             if($row['email'] == NULL) {
                 break;
             } else {
-                // dd($row);
                 $user = User::create([
-                    'no_punggung' => str_pad((int) $row['wilayah'], 2, '0', STR_PAD_LEFT).str_pad(count(User::all())+1, 4, 0, STR_PAD_LEFT),
+                    // 'no_punggung' => str_pad((int) $row['wilayah'], 2, '0', STR_PAD_LEFT).str_pad(count(User::all())+1, 4, 0, STR_PAD_LEFT),
+                    'no_punggung' => $row['no_punggung'],
                     'nama' => $row['nama'],
                     'alamat' => $row['alamat'],
                     'npwp' => null,
                     'no_hp' => $row['no_hp'],
                     'email' =>  $row['email'],
-                    'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+                    'password' => \Hash::make('12345678'), // password
                     'id_wilayah' => $row['wilayah']
                 ]);
     
@@ -86,12 +85,12 @@ class UserImport implements ToCollection, WithHeadingRow
                 };
                 
                 // //Mail::to($user->email)->send(new MailNotify($user));
-                dispatch(new SendMailJob($user->email, new MailNotify($user)));
+                // dispatch(new SendMailJob($user->email, new MailNotify($user)));
             }
             
         }
         
-        // return $user;
+        return $user;
 
     }
 }

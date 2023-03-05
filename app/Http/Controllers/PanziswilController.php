@@ -201,9 +201,9 @@ class PanziswilController extends Controller
 	public function import_excel(Request $request) 
 	{
 		// validasi
-		$this->validate($request, [
-			'file' => 'required|mimes:csv,xls,xlsx'
-		]);
+		// $this->validate($request, [
+		// 	'file' => 'required|mimes:csv,xls,xlsx'
+		// ]);
 
 		// menangkap file excel
 		$file = $request->file('file');
@@ -216,12 +216,11 @@ class PanziswilController extends Controller
 
 		// import data
 		Excel::import(new UserImport, public_path('/import_excel/'.$nama_file));
-
 		// notifikasi dengan session
 		Session::flash('sukses','Data Siswa Berhasil Diimport!');
 
 		// alihkan halaman kembali
-		return redirect('/panziswil/user');
+		return redirect()->route('panziswil.user');
 	}
 
 	public function export_excel()
