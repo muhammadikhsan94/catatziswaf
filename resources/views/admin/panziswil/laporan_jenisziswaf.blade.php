@@ -127,7 +127,7 @@
 
         $('select').selectpicker();
         $('#pilih_wilayah').change(function() {
-            table.ajax.url('panziswil/laporan/jenisziswaf/getdata/'+$(this).val()).load();
+            table.ajax.url("{{env('APP_URL')}}"+'panziswil/laporan/jenisziswaf/getdata/'+$(this).val()).load();
         });
         $('#pilih_wilayah').trigger("change");
     });

@@ -319,6 +319,8 @@
 
         var table = $('#tabel-donatur').DataTable({
             dom: 'lfrtip',
+            processing: true,
+            serverSide: true,
             "language": {
                 "sEmptyTable": "DATA KOSONG ATAU TIDAK DITEMUKAN !",
                 "sLengthMenu": "Tampilkan _MENU_ records",

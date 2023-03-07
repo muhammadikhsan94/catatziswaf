@@ -242,7 +242,7 @@
                     <input class="form-control" id="bukti_transaksi" name="bukti_transaksi" type="file" 
                         onchange="document.getElementById('imagePreview').style.display = 'block'; document.getElementById('imagePreview').src = window.URL.createObjectURL(this.files[0]); document.getElementById('imagePrevious').style.display = 'none';">
                     <p style="padding: 10px 0">
-                        <a class="pop"><img src="{{asset('bukti/'.$data['transaksi']->bukti_transaksi)}}" id="imagePrevious" alt="bukti transaksi" style="width: 100%;cursor:zoom-in;" /></a>
+                        <a class="pop"><img src="{{asset(''.$data['transaksi']->bukti_transaksi)}}" id="imagePrevious" alt="bukti transaksi" style="width: 100%;cursor:zoom-in;" /></a>
                         <a class="pop"><img id="imagePreview" alt="bukti transaksi" style="width: 100%;cursor:zoom-in;display: none;" /></a>
                     </p>
                 </div>
