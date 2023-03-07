@@ -285,7 +285,7 @@
                 "sSearch": "Cari Data/Filter:",
             },
             ajax: {
-                url: "{{ url('manajer/transaksi/getdata') }}",
+                url: "{{ route('manajer.getTransaksi') }}",
             },
             "columnDefs": [
                 {"className": "dt-center", "targets": [7, 8]}

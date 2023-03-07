@@ -201,7 +201,7 @@
                 "sSearch": "Cari Data:",
             },
             ajax: {
-                url: "{{ url('manajerarea/transaksi/getdata') }}",
+                url: "{{ route('manajerarea.getTransaksi') }}",
             },
             columns: [{
                 data: "transaks.id",

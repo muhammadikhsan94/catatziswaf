@@ -213,7 +213,7 @@
                 "sSearch": "Cari Data/Filter:",
             },
             ajax: {
-                url: "{{ url('duta/transaksi/getdata') }}",
+                url: "{{ route('duta.getTransaksi') }}",
             },
             "order": [[ 7, "asc" ]],
             "columnDefs": [

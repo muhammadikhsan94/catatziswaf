@@ -389,7 +389,7 @@
             //END
 
             $.ajax({
-                url: '/panziswil/rekening/lembaga/'+lembaga,
+                url: '{{ env('APP_URL') }}'+'/panziswil/rekening/lembaga/'+lembaga,
                 type: "GET",
                 dataType: "JSON",
                 success:function(datas){
