@@ -425,17 +425,17 @@
         $('select').selectpicker();
         $('#status_transaksi').change(function() {
             if ($(this).val() == 1) {
-                table.ajax.url("{{env('APP_URL')}}"+'lazis/transaksi/getdata/1').load();
+                table.ajax.url("{{env('APP_URL')}}"+'/lazis/transaksi/getdata/1').load();
             } else if ($(this).val() == 2) {
-                table.ajax.url("{{env('APP_URL')}}"+'lazis/transaksi/getdata/2').load();
+                table.ajax.url("{{env('APP_URL')}}"+'/lazis/transaksi/getdata/2').load();
             } else if ($(this).val() == 3) {
-                table.ajax.url("{{env('APP_URL')}}"+'lazis/transaksi/getdata/3').load();
+                table.ajax.url("{{env('APP_URL')}}"+'/lazis/transaksi/getdata/3').load();
             } else if ($(this).val() == 4) {
-                table.ajax.url("{{env('APP_URL')}}"+'lazis/transaksi/getdata/4').load();
+                table.ajax.url("{{env('APP_URL')}}"+'/lazis/transaksi/getdata/4').load();
             } else if ($(this).val() == 5) {
-                table.ajax.url("{{env('APP_URL')}}"+'lazis/transaksi/getdata/5').load();
+                table.ajax.url("{{env('APP_URL')}}"+'/lazis/transaksi/getdata/5').load();
             } else {
-                table.ajax.url("{{env('APP_URL')}}"+'lazis/transaksi/getdata/0').load();
+                table.ajax.url("{{env('APP_URL')}}"+'/lazis/transaksi/getdata/0').load();
             }
         });
         $('#status_transaksi').trigger("change");

@@ -397,7 +397,7 @@
 
         $('select').selectpicker();
         $('#status_transaksi').change(function() {
-            table.ajax.url("{{env('APP_URL')}}"+'transaksi/getdata/'+$(this).val()).load();
+            table.ajax.url("{{env('APP_URL')}}"+'/transaksi/getdata/'+$(this).val()).load();
         });
         $('#status_transaksi').trigger("change");
 
