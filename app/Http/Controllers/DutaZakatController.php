@@ -235,7 +235,9 @@ class DutaZakatController extends Controller
 
         //Barang
         $barangx = JenisTransaksi::where('id', '4')->first();
-        if(ucwords($req->jenis_transaksi) == $barangx->id) {
+        $barangx = $barang->id ?? null;
+
+        if(ucwords($req->jenis_transaksi) == $barangx) {
             $barang                     = new Barang();
             $barang->id_transaksi       = $transaksi->id;
             $barang->nama_barang        = ucwords($req->nama_barang);

@@ -232,6 +232,7 @@ class ManajerController extends Controller
             $data = Transaksi::find($request->idTrx1);
             $status = StatusTransaksi::where('id_transaksi', $data->id)->first();
             $status->manajer_status = Auth::user()->id;
+            $status->panzisda_status = 1;
             $status->updated_at = null;
             $status->komentar = null;
             $status->save();
@@ -239,6 +240,7 @@ class ManajerController extends Controller
             $data = Transaksi::find($request->idTrx2);
             $status = StatusTransaksi::where('id_transaksi', $data->id)->first();
             $status->manajer_status = null;
+            $status->panzisda_status = null;
             $status->updated_at = null;
             $status->komentar = $request->komentar;
             $status->save();
