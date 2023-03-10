@@ -399,7 +399,6 @@
                     target.empty();
                     $.each(datas, function(key, value) {
                         target.append('<option value="'+ value.norek +'">'+ value.norek +'</option>');
-                        // console.log(value.id, value.norek, data.rek_bank);
                         if (value.norek == data.rek_bank) {
                             $('.selectpicker').selectpicker('refresh');
                             $('select[id=rek_bank]').selectpicker('val', data.rek_bank);

@@ -535,8 +535,9 @@ class DutaZakatController extends Controller
         }
 
         $nontunai = JenisTransaksi::whereIn('jenis_transaksi', ['transfer','TRANSFER'])->first();
+        $nontunai = $nontunai->id ?? null;
         //Jenis Transaksi
-        if ($request->jenis_transaksi != $nontunai->id) {
+        if ($request->jenis_transaksi != $nontunai) {
             $transaksi->rek_bank   = '-';
         } else {
             $transaksi->rek_bank   = $request->rek_bank;
@@ -565,7 +566,8 @@ class DutaZakatController extends Controller
 
         //Barang
         $barangx = JenisTransaksi::whereIn('jenis_transaksi', ['barang','BARANG'])->first();
-        if(ucwords($request->jenis_transaksi) == $barangx->id) {
+        $barangx = $barangx->id ?? null;
+        if(ucwords($request->jenis_transaksi) == $barangx) {
             $barang                     = new Barang();
             $barang->id_transaksi       = $transaksi->id;
             $barang->nama_barang        = strtolower($request->nama_barang);
