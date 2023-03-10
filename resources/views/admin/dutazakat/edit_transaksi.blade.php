@@ -370,9 +370,15 @@
 
             var lembaga_dm = <?php echo json_encode($data['lembaga']->whereIn('nama_lembaga', ['dana mandiri', 'DANA MANDIRI'])->first()); ?>;
             var lapor = <?php echo json_encode($data['jenis']->whereIn('jenis_transaksi', ['lapor', 'Lapor', 'LAPOR'])->first()); ?>;
+            if(lembaga_dm!=null) {
+                lembaga_dm = lembaga_dm.id;
+            }
+            if(lapor!=null) {
+                lapor = lapor.id;
+            }
 
-            if (lembaga == lembaga_dm.id) {
-                $('select[name=jenis_transaksi]').val(lapor.id);
+            if (lembaga == lembaga_dm) {
+                $('select[name=jenis_transaksi]').val(lapor);
                 $('#jenis_transaksi').attr('required', '');
                 $('#tambah_barang').hide();
                 $('#tambah_bank').hide();
@@ -629,16 +635,25 @@
         //select picker
         $('select').selectpicker();
 
-        var barang = <?php echo json_encode($data['jenis']->whereIn('jenis_transaksi', ['barang','BARANG'])->first()); ?>;
-        var non_tunai = <?php echo json_encode($data['jenis']->whereIn('jenis_transaksi', ['transfer','TRANSFER'])->first()); ?>;
-        var lapor = <?php echo json_encode($data['jenis']->whereIn('jenis_transaksi', ['lapor','LAPOR'])->first()); ?>;
+        var barang = <?php echo json_encode($data['jenis']->where('jenis_transaksi', 'barang')->first()); ?>;
+        if(barang!=null) {
+            barang = barang.id;
+        }
+        var non_tunai = <?php echo json_encode($data['jenis']->where('jenis_transaksi', 'transfer')->first()); ?>;
+        if(non_tunai!=null) {
+            non_tunai = non_tunai.id;
+        }
+        var lapor = <?php echo json_encode($data['jenis']->where('jenis_transaksi', 'lapor')->first()); ?>;
+        if(lapor!=null) {
+            lapor = lapor.id;
+        }
 
         $("#jenis_transaksi").change(function() {
-            if ($(this).val() == barang.id) {
+            if ($(this).val() == barang) {
                 $('#input_barang').show();
                 $('#nama_barang').attr('required', '');
                 $('#input_bank').hide();
-            } else if ($(this).val() == non_tunai.id) {
+            } else if ($(this).val() == non_tunai) {
                 $('#input_barang').hide();
                 $('#input_bank').show();
                 $('#rek_bank').attr('required', '');
