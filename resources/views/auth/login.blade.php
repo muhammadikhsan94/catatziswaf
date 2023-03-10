@@ -31,7 +31,7 @@
     });
     </script>
 </head>
-<body class="hold-transition" background="{{ url('images/bg.png') }}" style="background-size: 100%;">
+<body class="hold-transition" background="{{ asset('images/bg.png') }}" style="background-size: 100%;">
     <div class="login-box" style="border-radius: 15px; background-color : white !important;" >
         <div class="" style="padding-top:12px">    
             <img class="img-responsive center-block" src="{{ asset('images/toplogin.jpg') }}" >    
