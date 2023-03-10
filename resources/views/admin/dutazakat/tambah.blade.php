@@ -343,8 +343,17 @@
         });
 
         var barang = <?php echo json_encode($data['jenis']->where('jenis_transaksi', 'barang')->first()); ?>;
+        if(barang!=null) {
+            barang = barang.id;
+        }
         var non_tunai = <?php echo json_encode($data['jenis']->where('jenis_transaksi', 'transfer')->first()); ?>;
+        if(non_tunai!=null) {
+            non_tunai = non_tunai.id;
+        }
         var lapor = <?php echo json_encode($data['jenis']->where('jenis_transaksi', 'lapor')->first()); ?>;
+        if(lapor!=null) {
+            lapor = lapor.id;
+        }
         
         $( function() {
             $( "#tanggal_transfer" ).datepicker({
@@ -389,7 +398,7 @@
             }
 
             if (lembaga == lembaga_dm) {
-                $('select[name=jenis_transaksi]').val(lapor.id);
+                $('select[name=jenis_transaksi]').val(lapor);
                 $('#jenis_transaksi').attr('required', '');
                 $('#tambah_barang').hide();
                 $('#tambah_bank').hide();
@@ -583,12 +592,12 @@
         $("#id_donatur").trigger("change");
 
         $("#jenis_transaksi").change(function() {
-            if ($(this).val() == barang.id ) {
+            if ($(this).val() == barang) {
                 $('#tambah_bank').hide();
                 $('#tambah_barang').show();
                 $('#norek').removeAttr('required', '');
                 $('#nama_barang').prop('required',true);
-            } else if ($(this).val() == non_tunai.id ) {
+            } else if ($(this).val() == non_tunai) {
                 $('#tambah_barang').hide();
                 $('#tambah_bank').show();
                 $('#rek_bank').prop('required',true);
