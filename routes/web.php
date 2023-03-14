@@ -31,7 +31,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 		return view('home');
 	});
 
-	Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
+	Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
 	Route::get('/profil', [App\Http\Controllers\HomeController::class, 'profil'])->name('profil');
 	Route::post('/profil/update', [App\Http\Controllers\HomeController::class, 'updateProfil'])->name('updateProfil');
 	Route::get('cetak', [App\Http\Controllers\HomeController::class, 'buatSuratTugas'])->name('buatSuratTugas');
