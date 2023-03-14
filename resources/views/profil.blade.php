@@ -170,7 +170,7 @@
                     alert("Data berhasil di update!");
                     html = '<div class="alert alert-success">' + data + '</div>';
                     $('#editUser')[0].reset();
-                    window.location.replace("{{url('')}}");
+                    window.location.replace("{{route('index')}}");
                 },
                 error: function (data) {
                     var html = '';
