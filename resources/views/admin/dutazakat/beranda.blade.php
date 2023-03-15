@@ -2,18 +2,18 @@
 
 @section('content')
 <div class="row">		
-	<div class="col-md-9">
+	<div class="col-md-12">
 		<div class="alert alert-success alert-dismissible">
 			<h5><i class="fa fa-exclamation-circle red"></i> Selamat Datang, <b>{{ strtoupper(Auth::user()->nama) }}</b>.</h5>
 			<span style="text-align: justify;">Berikut ini adalah halaman aplikasi zakat untuk anda sebagai Duta Zakat. Jika anda bukan sebagai Duta Zakat, silahkan hubungi Panzisda wilayah anda. Terima Kasih.</span>
 		</div>
 	</div>
-	<div class="col-md-3">
+	{{--<div class="col-md-3">
 		<div class="alert alert-success">
 			<h5>SURAT TUGAS:</h5>
 			<a href="{{ url('surat_tugas/izi/'.Auth::user()->id) }}" target=new type="button" class="btn btn-info btn-xs">IZI</a>&nbsp;<a href="{{ url('surat_tugas/lazdai/'.Auth::user()->id) }}" target=new type="button" class="btn btn-info btn-xs">LAZDAI</a>
 		</div>
-	</div>
+	</div>--}}
 </div>
 
 <div class="row">

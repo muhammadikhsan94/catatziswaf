@@ -38,14 +38,13 @@
                             <th rowspan="2" width="10%"> Panzisnas </th>
                             <th rowspan="2" width="10%"> Panziswil </th>
                             <th rowspan="2" width="10%"> Panzisda </th>
-                            <th colspan="4"> <center>Mitra</center> </th>
+                            <th colspan="3"> <center>Mitra</center> </th>
                             <th rowspan="2" width="10%"> Jumlah </th>
                         </tr>
                         <tr class="bg-success">
                             <th width="10%"> IZI </th>
                             <th width="10%"> LAZDAI </th>
                             <th width="10%"> YAYASAN </th>
-                            <th width="10%"> DANA MANDIRI </th>
                         </tr>
                     </thead>
                     <tfoot>
@@ -53,7 +52,6 @@
                             <th></th>
                             <th></th>
                             <th style="text-align:right">TOTAL:</th>
-                            <th></th>
                             <th></th>
                             <th></th>
                             <th></th>
@@ -104,10 +102,10 @@
             },
             "columnDefs": [
                 {"className": "dt-center", "targets": [0]},
-                {"className": "dt-right", "targets": [3, 4, 5, 6, 7, 8, 9, 10]},
+                {"className": "dt-right", "targets": [3, 4, 5, 6, 7, 8, 9]},
             ],
             ajax: {
-                url: "",
+                url: "{{ route('panziswil.getDataLaporanRealisasiDistribusi', '') }}"+"/"+0,
             },
             "lengthMenu": [25, 50, 100],
             "orderFixed": [0, 'asc'],
@@ -121,7 +119,6 @@
                 { data: 'izi', render: $.fn.dataTable.render.number( ',', '.', 0 ) },
                 { data: 'lazdai', render: $.fn.dataTable.render.number( ',', '.', 0 ) },
                 { data: 'yayasan', render: $.fn.dataTable.render.number( ',', '.', 0 ) },
-                { data: 'dana_mandiri', render: $.fn.dataTable.render.number( ',', '.', 0 ) },
                 { data: 'jumlah', render: $.fn.dataTable.render.number( ',', '.', 0 ) },
             ],
             footerCallback: function( tfoot, data, start, end, display ) {
@@ -182,20 +179,12 @@
                         return convertToRupiah(total);
                     }, 0)
                 );
-                $(api.column(10).footer()).html(
-                    api.column(10).data().reduce(function ( a, b ) {
-                        a = parseInt(a.toString().replace(/,.*|[^0-9]/g, ''), 10);
-                        b = parseInt(b.toString().replace(/,.*|[^0-9]/g, ''), 10);
-                        total = a+b;
-                        return convertToRupiah(total);
-                    }, 0)
-                );
             }
         });
 
         $('select').selectpicker();
         $('#pilih_wilayah').change(function() {
-            table.ajax.url('{{ env('APP_URL') }}'+'/panziswil/laporan/distribusi/getdata/'+$(this).val()).load();
+            table.ajax.url("{{ route('panziswil.getDataLaporanRealisasiDistribusi', '') }}"+"/"+$(this).val()).load();
         });
         $('#pilih_wilayah').trigger("change");
     });

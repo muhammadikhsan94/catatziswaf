@@ -143,7 +143,7 @@
                 "sSearch": "Cari Data/Filter:",
             },
             ajax: {
-                url: "{{ url('panzisda/laporan/getdata') }}",
+                url: "{{ route('panzisda.getDataLaporanRealisasiDutaZakat') }}",
             },
             columns: [{
                 data: 'no_punggung',

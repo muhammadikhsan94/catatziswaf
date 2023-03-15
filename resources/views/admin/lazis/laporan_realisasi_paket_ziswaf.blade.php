@@ -90,7 +90,7 @@
             ],
             "orderFixed": [0, 'asc'],
             ajax: {
-                url: "{{ url('lazis/laporan/realisasi-paketziswaf/getdata/0') }}",
+                url: "{{ route('lazis.getDataLaporanRealisasiPaketZiswaf', '') }}"+"/"+0,
             },
             columns: [{
                 data: "id",
@@ -126,7 +126,7 @@
 
         $('select').selectpicker();
         $('#wilayah').change(function() {
-            table.ajax.url('{{ env('APP_URL') }}'+'/lazis/laporan/realisasi-paketziswaf/getdata/'+$(this).val()).load();
+            table.ajax.url("{{ route('lazis.getDataLaporanRealisasiPaketZiswaf', '') }}"+"/"+$(this).val()).load();
         });
         $('#wilayah').trigger("change");
     });

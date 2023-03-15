@@ -97,7 +97,7 @@
                     {"className": "dt-body-right", "targets": [2,3,4,5,6,7,8]}
                 ],
                 ajax: {
-                    url: "{{ url('panzisda/laporan/distribusi/getdata') }}",
+                    url: "{{ route('panzisda.getDataLaporanDistribusi') }}",
                 },
                 columns: [
                     { data: "id", render: function (data, type, row, meta) { return meta.row + meta.settings._iDisplayStart + 1; } },
@@ -105,9 +105,10 @@
                     { data: 'panzisnas', render: $.fn.dataTable.render.number( ',', '.', 0 ) },
                     { data: 'panziswil', render: $.fn.dataTable.render.number( ',', '.', 0 ) },
                     { data: 'panzisda', render: $.fn.dataTable.render.number( ',', '.', 0 ) },
-                    { data: 'izi', render: $.fn.dataTable.render.number( ',', '.', 0 ) },
-                    { data: 'lazdai', render: $.fn.dataTable.render.number( ',', '.', 0 ) },
-                    { data: 'dana_mandiri', render: $.fn.dataTable.render.number( ',', '.', 0 ) },
+                    { data: 'lembaga0', render: $.fn.dataTable.render.number( ',', '.', 0 ) },
+                    { data: 'lembaga1', render: $.fn.dataTable.render.number( ',', '.', 0 ) },
+                    { data: 'lembaga2', render: $.fn.dataTable.render.number( ',', '.', 0 ) },
+                    { data: 'lembaga3', render: $.fn.dataTable.render.number( ',', '.', 0 ) },
                     { data: 'jumlah', render: $.fn.dataTable.render.number( ',', '.', 0 ) },
                 ],
                 footerCallback: function( tfoot, data, start, end, display ) {
@@ -168,6 +169,14 @@
                             return convertToRupiah(total);
                         }, 0)
                     );
+                    $(api.column(9).footer()).html(
+                        api.column(9).data().reduce(function ( a, b ) {
+                            a = parseInt(a.toString().replace(/,.*|[^0-9]/g, ''), 10);
+                            b = parseInt(b.toString().replace(/,.*|[^0-9]/g, ''), 10);
+                            total = a+b;
+                            return convertToRupiah(total);
+                        }, 0)
+                    );
                 }
             });
         } else {
@@ -189,7 +198,7 @@
                     {"className": "dt-right", "targets": [2,3,4,5,6,7,8,9]}
                 ],
                 ajax: {
-                    url: "{{ url('panzisda/laporan/distribusi/getdata') }}",
+                    url: "{{ route('panzisda.getDataLaporanDistribusi') }}",
                 },
                 columns: [
                     { data: "id", render: function (data, type, row, meta) { return meta.row + meta.settings._iDisplayStart + 1; } },
@@ -197,10 +206,10 @@
                     { data: 'panzisnas', render: $.fn.dataTable.render.number( ',', '.', 0 ) },
                     { data: 'panziswil', render: $.fn.dataTable.render.number( ',', '.', 0 ) },
                     { data: 'panzisda', render: $.fn.dataTable.render.number( ',', '.', 0 ) },
-                    { data: 'izi', render: $.fn.dataTable.render.number( ',', '.', 0 ) },
-                    { data: 'lazdai', render: $.fn.dataTable.render.number( ',', '.', 0 ) },
-                    { data: 'yayasan', render: $.fn.dataTable.render.number( ',', '.', 0 ) },
-                    { data: 'dana_mandiri', render: $.fn.dataTable.render.number( ',', '.', 0 ) },
+                    { data: 'lembaga0', render: $.fn.dataTable.render.number( ',', '.', 0 ) },
+                    { data: 'lembaga1', render: $.fn.dataTable.render.number( ',', '.', 0 ) },
+                    { data: 'lembaga2', render: $.fn.dataTable.render.number( ',', '.', 0 ) },
+                    { data: 'lembaga3', render: $.fn.dataTable.render.number( ',', '.', 0 ) },
                     { data: 'jumlah', render: $.fn.dataTable.render.number( ',', '.', 0 ) },
                 ],
                 footerCallback: function( tfoot, data, start, end, display ) {

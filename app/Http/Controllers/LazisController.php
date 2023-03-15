@@ -474,11 +474,7 @@ class LazisController extends Controller
         $data['user_panziswil']     = $this->user_panziswil->where('id', Auth::user()->id)->first(); 
         $data['lembaga']            = DB::table('lembaga')->join('role','role.id_lembaga','=','lembaga.id')->select('lembaga.nama_lembaga')->where('role.id_users', Auth::user()->id)->where('role.id_lembaga', '!=', NULL)->first();
 
-        if ($data['lembaga']->nama_lembaga == 'izi' or $data['lembaga']->nama_lembaga == 'lazdai' or $data['lembaga']->nama_lembaga == 'dana mandiri') {
-            $data['wilayah']         = Wilayah::all();
-        } else {
-            $data['wilayah']         = Wilayah::where('id', Auth::user()->id_wilayah)->get();
-        }
+        $data['wilayah']         = Wilayah::all();
         
         return view('admin.lazis.laporan_realisasi_paket_ziswaf', compact('data'));
     }
@@ -496,11 +492,7 @@ class LazisController extends Controller
                         ->first();
 
         if($id == 0) {
-            if ($lembaga->nama_lembaga == 'IZI' or $lembaga->nama_lembaga == 'LAZDAI' or $lembaga->nama_lembaga == 'DANA MANDIRI') {
-                $wilayah        = Wilayah::all();
-            } else {
-                $wilayah        = Wilayah::where('id', Auth::user()->id_wilayah)->get();
-            }
+            $wilayah        = Wilayah::all();
 
             $temp = [];
             foreach($wilayah as $item1) {

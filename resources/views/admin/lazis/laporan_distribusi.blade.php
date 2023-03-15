@@ -84,7 +84,7 @@
                 {"className": "dt-right", "targets": "_all"}
             ],
             ajax: {
-                url: "{{ url('lazis/laporan/distribusi/getdata') }}",
+                url: "{{ route('lazis.getDataLaporanDistribusi') }}",
             },
             columns: [
                 { data: "id", render: function (data, type, row, meta) { return meta.row + meta.settings._iDisplayStart + 1; } },

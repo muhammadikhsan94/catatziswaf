@@ -60,7 +60,7 @@
                 "sSearch": "Cari Data/Filter:",
             },
             ajax: {
-                url: "{{ url('panzisda/laporan/donatur/getdata') }}",
+                url: "{{ route('panzisda.getDataLaporanDonatur') }}",
             },
             "columnDefs": [
                 {"className": "dt-center", "targets": [0, 1, 4, 5, 6, 7, 8]}

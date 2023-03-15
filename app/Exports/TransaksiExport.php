@@ -22,30 +22,36 @@ class TransaksiExport implements FromCollection, WithHeadings
     {
         if ($this->id == null) {
             $data = DB::table('transaksi')
+                ->join('detail_transaksi AS detail','detail.id_transaksi','=','transaksi.id')
                 ->join('status_transaksi','transaksi.id','=','status_transaksi.id_transaksi')
-                ->where('status_transaksi.panzisda_status','!=',NULL)
                 ->join('users','transaksi.id_users','=','users.id')
                 ->join('lembaga','transaksi.id_lembaga','=','lembaga.id')
+                ->join('jenis_transaksi As jenis','jenis.id','=','transaksi.id_jenis_transaksi')
                 ->join('wilayah','users.id_wilayah','=','wilayah.id')
                 ->join('donatur','donatur.id','=','transaksi.id_donatur')
-                ->join('paketzakat','paketzakat.id','=','transaksi.id_paket_zakat')
+                ->join('paketzakat','paketzakat.id','=','detail.id_paket_zakat')
                 ->leftJoin('barang','barang.id_transaksi','=','transaksi.id')
-                ->select('transaksi.no_kuitansi','users.nama as duta','users.no_punggung','wilayah.nama_wilayah','donatur.nama as donatur','lembaga.nama_lembaga','paketzakat.nama_paket_zakat','transaksi.item','barang.nama_barang','transaksi.nama_bank','transaksi.jumlah')
-                ->orderBy('transaksi.id', 'DESC')
+                ->select('transaksi.no_kuitansi','transaksi.tanggal_transfer','users.nama as duta','users.no_punggung','wilayah.nama_wilayah','donatur.nama as donatur','lembaga.nama_lembaga','paketzakat.nama_paket_zakat','jenis.jenis_transaksi','barang.nama_barang','transaksi.rek_bank',DB::raw('SUM(detail.jumlah) AS jumlah'))
+                ->where('status_transaksi.panzisda_status','!=',NULL)
+                ->groupBy('transaksi.no_kuitansi','transaksi.tanggal_transfer','users.nama','users.no_punggung','wilayah.nama_wilayah','donatur.nama','lembaga.nama_lembaga','paketzakat.nama_paket_zakat','jenis.jenis_transaksi','barang.nama_barang','transaksi.rek_bank')
+                ->orderBy('transaksi.tanggal_transfer', 'ASC')
                 ->get();
         } else {
             $data = DB::table('transaksi')
+                ->join('detail_transaksi AS detail','detail.id_transaksi','=','transaksi.id')
                 ->join('status_transaksi','transaksi.id','=','status_transaksi.id_transaksi')
-                ->where('status_transaksi.panzisda_status','!=',NULL)
                 ->join('users','transaksi.id_users','=','users.id')
-                // ->where('users.id_wilayah', $this->id)
                 ->join('lembaga','transaksi.id_lembaga','=','lembaga.id')
+                ->join('jenis_transaksi As jenis','jenis.id','=','transaksi.id_jenis_transaksi')
                 ->join('wilayah','users.id_wilayah','=','wilayah.id')
                 ->join('donatur','donatur.id','=','transaksi.id_donatur')
-                ->join('paketzakat','paketzakat.id','=','transaksi.id_paket_zakat')
+                ->join('paketzakat','paketzakat.id','=','detail.id_paket_zakat')
                 ->leftJoin('barang','barang.id_transaksi','=','transaksi.id')
-                ->select('transaksi.no_kuitansi','users.nama as duta','users.no_punggung','wilayah.nama_wilayah','donatur.nama as donatur','lembaga.nama_lembaga','paketzakat.nama_paket_zakat','transaksi.item','barang.nama_barang','transaksi.nama_bank','transaksi.jumlah')
-                ->orderBy('transaksi.id', 'DESC')
+                ->select('transaksi.no_kuitansi','transaksi.tanggal_transfer','users.nama as duta','users.no_punggung','wilayah.nama_wilayah','donatur.nama as donatur','lembaga.nama_lembaga','paketzakat.nama_paket_zakat','jenis.jenis_transaksi','barang.nama_barang','transaksi.rek_bank',DB::raw('SUM(detail.jumlah) AS jumlah'))
+                ->where('status_transaksi.panzisda_status','!=',NULL)
+                ->where('users.id_wilayah', $this->id)
+                ->groupBy('transaksi.no_kuitansi','transaksi.tanggal_transfer','users.nama','users.no_punggung','wilayah.nama_wilayah','donatur.nama','lembaga.nama_lembaga','paketzakat.nama_paket_zakat','jenis.jenis_transaksi','barang.nama_barang','transaksi.rek_bank')
+                ->orderBy('transaksi.tanggal_transfer', 'ASC')
                 ->get();
         }
         return $data;
@@ -55,6 +61,7 @@ class TransaksiExport implements FromCollection, WithHeadings
     {
         return [
             'Nomor Kuitansi',
+            'Tgl Transaksi',
             'Nama Duta Zakat',
             'Nomor Punggung',
             'Nama Daerah',

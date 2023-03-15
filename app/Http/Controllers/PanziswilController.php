@@ -785,10 +785,10 @@ class PanziswilController extends Controller
 		$user->password = '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi';
 		
 		if(!$user->save()) {
-			return redirect('/panziswil/user')->with(['errors' => 'Gagal reset password!']);
+			return redirect()->to('panziswil/user')->with(['errors' => 'Gagal reset password!']);
 		} else {
 			//Mail::to($user->email)->send(new ResetPasswordNotify($user));
-			return redirect('/panziswil/user')->with(['success' => 'Password pengguna "'.$data->no_punggung.'" berhasil di reset!']);
+			return redirect()->to('panziswil/user')->with(['success' => 'Password pengguna "'.$user->no_punggung.'" berhasil di reset!']);
 		}
 	}
 
@@ -1957,8 +1957,6 @@ class PanziswilController extends Controller
 								$name = 'izi';
 							} else if ($item3->nama_lembaga == 'LAZDAI' OR $item3->nama_lembaga == 'lazdai' or $item3->nama_lembaga == 'Lazdai') {
 								$name = 'lazdai';
-							} else if ($item3->nama_lembaga == 'DANA MANDIRI' OR $item3->nama_lembaga == 'dana mandiri' or $item3->nama_lembaga == 'Dana Mandiri') {
-								$name = 'dana_mandiri';
 							} else {
 								$name = 'yayasan';
 							}

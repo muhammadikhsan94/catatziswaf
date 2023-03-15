@@ -161,7 +161,7 @@ class HomeController extends Controller
         return Excel::download(new TunaiExport($id), 'TUNAI.xlsx');
     }
 
-    public function nontunauByIdExport()
+    public function nontunaiByIdExport()
     {
         $id = Auth::user()->id_wilayah;
         return Excel::download(new NonTunaiExport($id), 'NONTUNAI.xlsx');

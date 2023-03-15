@@ -718,10 +718,10 @@ class PanzisdaController extends Controller
 		$user->password = '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi';
 		
 		if(!$user->save()) {
-			return redirect('/panzisda/user')->with(['errors' => 'Gagal reset password!']);
+			return redirect()->to('panzisda/user')->with(['errors' => 'Gagal reset password!']);
 		} else {
 			// //Mail::to($user->email)->send(new ResetPasswordNotify($user));
-			return redirect('/panzisda/user')->with(['success' => 'Password pengguna "'.$user->no_punggung.'" berhasil di reset!']);
+			return redirect()->to('panzisda/user')->with(['success' => 'Password pengguna "'.$user->no_punggung.'" berhasil di reset!']);
 		}
 	}
 
@@ -1350,17 +1350,18 @@ class PanzisdaController extends Controller
 				$dummy['panzisda'] = ($jumlah->jumlah != NULL) ? round(($dis->panzisda * $jumlah->jumlah) / 100) : 0;
 				
 				$total = 0;
-				foreach($lembaga as $item2) {
-					$name = '';
-					if ($item2->nama_lembaga == 'IZI' OR $item2->nama_lembaga == 'izi' or $item2->nama_lembaga == 'Izi') {
-						$name = 'izi';
-					} else if ($item2->nama_lembaga == 'LAZDAI' OR $item2->nama_lembaga == 'lazdai' or $item2->nama_lembaga == 'Lazdai') {
-						$name = 'lazdai';
-					} else if ($item2->nama_lembaga == 'DANA MANDIRI' OR $item2->nama_lembaga == 'dana mandiri' or $item2->nama_lembaga == 'Dana Mandiri') {
-						$name = 'dana_mandiri';
-					} else {
-						$name = 'yayasan';
-					}
+				foreach($lembaga as $no=>$item2) {
+					$name = 'lembaga'.$no;
+					// $name = '';
+					// if ($item2->nama_lembaga == 'IZI' OR $item2->nama_lembaga == 'izi' or $item2->nama_lembaga == 'Izi') {
+					// 	$name = 'izi';
+					// } else if ($item2->nama_lembaga == 'LAZDAI' OR $item2->nama_lembaga == 'lazdai' or $item2->nama_lembaga == 'Lazdai') {
+					// 	$name = 'lazdai';
+					// } else if ($item2->nama_lembaga == 'DANA MANDIRI' OR $item2->nama_lembaga == 'dana mandiri' or $item2->nama_lembaga == 'Dana Mandiri') {
+					// 	$name = 'dana_mandiri';
+					// } else {
+					// 	$name = 'yayasan';
+					// }
 							
 					$transaksi  = DB::table('transaksi')
 								->leftJoin('users','users.id','=','transaksi.id_users')
@@ -1373,16 +1374,16 @@ class PanzisdaController extends Controller
 								->where('status_transaksi.lazis_status', '!=', NULL)
 								->first();
 					
-					if ($name == 'dana_mandiri') {
+					// if ($name == 'dana_mandiri') {
 						$dummy[$name] = ($transaksi->jumlah != NULL) ? $transaksi->jumlah : 0;
-					} else {
-						$dummy[$name] = ($transaksi->jumlah != NULL) ? round(($dis->mitra_strategis * $transaksi->jumlah) / 100) : 0;
-					}
+					// } else {
+					// 	$dummy[$name] = ($transaksi->jumlah != NULL) ? round(($dis->mitra_strategis * $transaksi->jumlah) / 100) : 0;
+					// }
 					$total = $total + $dummy[$name];
 				}
-				if(empty($dummy['yayasan'])) {
-					$dummy['yayasan'] = 0;
-				}
+				// if(empty($dummy['yayasan'])) {
+				// 	$dummy['yayasan'] = 0;
+				// }
 			}
 			$dummy['jumlah'] = $dummy['panzisnas'] + $dummy['panziswil'] + $dummy['panzisda'] + $total;
 			$temp[] = $dummy;

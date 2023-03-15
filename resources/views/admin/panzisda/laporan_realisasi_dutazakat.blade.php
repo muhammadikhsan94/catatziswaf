@@ -85,7 +85,7 @@
                     {"className": "dt-right", "targets": [2, 3, 4, 5]}
                 ],
                 ajax: {
-                    url: "{{ url('panzisda/laporan/realisasi-paketziswaf-dutazakat/getdata') }}",
+                    url: "{{ route('panzisda.getDataLaporanRealisasiDutaZakat') }}",
                 },
                 columns: [
                     { data: "id", render: function (data, type, row, meta) { return meta.row + meta.settings._iDisplayStart + 1; } },
