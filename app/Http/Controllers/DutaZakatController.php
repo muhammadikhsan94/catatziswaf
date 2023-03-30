@@ -247,6 +247,8 @@ class DutaZakatController extends Controller
         //Status Transaksi
         $status                     = new StatusTransaksi();
         $status->id_transaksi       = $transaksi->id;
+        $status->manajer_status     = Auth::user()->id;
+        $status->panzisda_status    = Auth::user()->id;
         $status->save();
     }
     
@@ -578,6 +580,8 @@ class DutaZakatController extends Controller
         $status     = StatusTransaksi::where('id_transaksi', $transaksi->id)->first();
         if ($status->komentar != NULL) {
             $status->id_transaksi = $transaksi->id;
+            $status->manajer_status = Auth::user()->id;
+            $status->panzisda_status = Auth::user()->id;
             $status->updated_at = Carbon::today();
             $status->save();
         }
