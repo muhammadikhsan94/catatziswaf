@@ -185,10 +185,10 @@ class LazisController extends Controller
                         ->join('donatur','transaksi.id_donatur','=','donatur.id')
                         ->join('status_transaksi', 'transaksi.id','=','status_transaksi.id_transaksi')
                         ->leftJoin('barang','barang.id_transaksi','=','transaksi.id')
-                        ->select('transaksi.id', 'wilayah.nama_wilayah', 'status_transaksi.komentar', 'transaksi.tanggal_transfer', 'donatur.nama as donatur', 'users.nama as user', 'jenis_transaksi.jenis_transaksi', 'lembaga.nama_lembaga as lembaga', DB::raw('CAST(SUM(detail_transaksi.jumlah) as UNSIGNED) as jumlah'), DB::raw('group_concat(paketzakat.nama_paket_zakat SEPARATOR ", ") as paket'), 'status_transaksi.panzisda_status', 'status_transaksi.lazis_status', 'status_transaksi.updated_at as update', 'status_transaksi.manajer_status')
+                        ->select('transaksi.id', 'wilayah.nama_wilayah', 'status_transaksi.komentar', 'transaksi.tanggal_transfer', 'donatur.nama as donatur', 'users.nama as user', 'jenis_transaksi.jenis_transaksi', 'lembaga.nama_lembaga as lembaga', DB::raw('CAST(SUM(detail_transaksi.jumlah) as UNSIGNED) as jumlah'), DB::raw('group_concat(paketzakat.nama_paket_zakat SEPARATOR ", ") as paket'), 'status_transaksi.panzisda_status', 'status_transaksi.lazis_status', 'status_transaksi.updated_at as update', 'status_transaksi.manajer_status','transaksi.no_kuitansi','donatur.no_hp','donatur.alamat','status_transaksi.komentar')
                         ->where('transaksi.id_lembaga', $id_lembaga)
                         ->orderBy('transaksi.id', 'DESC')
-                        ->groupBy('transaksi.id','wilayah.nama_wilayah','donatur.nama','users.nama','jenis_transaksi.jenis_transaksi','lembaga.nama_lembaga', 'status_transaksi.panzisda_status', 'transaksi.tanggal_transfer', 'status_transaksi.lazis_status', 'status_transaksi.komentar', 'status_transaksi.updated_at', 'status_transaksi.manajer_status')
+                        ->groupBy('transaksi.id','wilayah.nama_wilayah','donatur.nama','users.nama','jenis_transaksi.jenis_transaksi','lembaga.nama_lembaga', 'status_transaksi.panzisda_status', 'transaksi.tanggal_transfer', 'status_transaksi.lazis_status', 'status_transaksi.komentar', 'status_transaksi.updated_at', 'status_transaksi.manajer_status','transaksi.no_kuitansi','donatur.no_hp','donatur.alamat','status_transaksi.komentar')
                         ->get();
         } else if ($id == 1) {
             $transaksi      = DB::table('transaksi')
@@ -201,11 +201,11 @@ class LazisController extends Controller
                         ->join('donatur','transaksi.id_donatur','=','donatur.id')
                         ->join('status_transaksi', 'transaksi.id','=','status_transaksi.id_transaksi')
                         ->leftJoin('barang','barang.id_transaksi','=','transaksi.id')
-                        ->select('transaksi.id', 'wilayah.nama_wilayah', 'status_transaksi.komentar', 'transaksi.tanggal_transfer', 'donatur.nama as donatur', 'users.nama as user', 'jenis_transaksi.jenis_transaksi', 'lembaga.nama_lembaga as lembaga', DB::raw('CAST(SUM(detail_transaksi.jumlah) as UNSIGNED) as jumlah'), DB::raw('group_concat(paketzakat.nama_paket_zakat SEPARATOR ", ") as paket'), 'status_transaksi.panzisda_status', 'status_transaksi.lazis_status', 'status_transaksi.updated_at as update', 'status_transaksi.manajer_status')
+                        ->select('transaksi.id', 'wilayah.nama_wilayah', 'status_transaksi.komentar', 'transaksi.tanggal_transfer', 'donatur.nama as donatur', 'users.nama as user', 'jenis_transaksi.jenis_transaksi', 'lembaga.nama_lembaga as lembaga', DB::raw('CAST(SUM(detail_transaksi.jumlah) as UNSIGNED) as jumlah'), DB::raw('group_concat(paketzakat.nama_paket_zakat SEPARATOR ", ") as paket'), 'status_transaksi.panzisda_status', 'status_transaksi.lazis_status', 'status_transaksi.updated_at as update', 'status_transaksi.manajer_status','transaksi.no_kuitansi','donatur.no_hp','donatur.alamat','status_transaksi.komentar')
                         ->where('transaksi.id_lembaga', $id_lembaga)
                         ->where('status_transaksi.lazis_status', '!=', NULL)
                         ->orderBy('transaksi.id', 'DESC')
-                        ->groupBy('transaksi.id','wilayah.nama_wilayah','donatur.nama','users.nama','jenis_transaksi.jenis_transaksi','lembaga.nama_lembaga', 'status_transaksi.panzisda_status', 'transaksi.tanggal_transfer', 'status_transaksi.lazis_status', 'status_transaksi.komentar', 'status_transaksi.updated_at', 'status_transaksi.manajer_status')
+                        ->groupBy('transaksi.id','wilayah.nama_wilayah','donatur.nama','users.nama','jenis_transaksi.jenis_transaksi','lembaga.nama_lembaga', 'status_transaksi.panzisda_status', 'transaksi.tanggal_transfer', 'status_transaksi.lazis_status', 'status_transaksi.komentar', 'status_transaksi.updated_at', 'status_transaksi.manajer_status','transaksi.no_kuitansi','donatur.no_hp','donatur.alamat','status_transaksi.komentar')
                         ->get();
         } else if ($id == 2) {
             $transaksi      = DB::table('transaksi')
@@ -218,12 +218,12 @@ class LazisController extends Controller
                         ->join('donatur','transaksi.id_donatur','=','donatur.id')
                         ->join('status_transaksi', 'transaksi.id','=','status_transaksi.id_transaksi')
                         ->leftJoin('barang','barang.id_transaksi','=','transaksi.id')
-                        ->select('transaksi.id', 'wilayah.nama_wilayah', 'status_transaksi.komentar', 'transaksi.tanggal_transfer', 'donatur.nama as donatur', 'users.nama as user', 'jenis_transaksi.jenis_transaksi', 'lembaga.nama_lembaga as lembaga', DB::raw('CAST(SUM(detail_transaksi.jumlah) as UNSIGNED) as jumlah'), DB::raw('group_concat(paketzakat.nama_paket_zakat SEPARATOR ", ") as paket'), 'status_transaksi.panzisda_status', 'status_transaksi.lazis_status', 'status_transaksi.updated_at as update', 'status_transaksi.manajer_status')
+                        ->select('transaksi.id', 'wilayah.nama_wilayah', 'status_transaksi.komentar', 'transaksi.tanggal_transfer', 'donatur.nama as donatur', 'users.nama as user', 'jenis_transaksi.jenis_transaksi', 'lembaga.nama_lembaga as lembaga', DB::raw('CAST(SUM(detail_transaksi.jumlah) as UNSIGNED) as jumlah'), DB::raw('group_concat(paketzakat.nama_paket_zakat SEPARATOR ", ") as paket'), 'status_transaksi.panzisda_status', 'status_transaksi.lazis_status', 'status_transaksi.updated_at as update', 'status_transaksi.manajer_status','transaksi.no_kuitansi','donatur.no_hp','donatur.alamat','status_transaksi.komentar')
                         ->where('transaksi.id_lembaga', $id_lembaga)
                         ->where('status_transaksi.komentar', '!=', NULL)
                         ->where('status_transaksi.updated_at', NULL)
                         ->orderBy('transaksi.id', 'DESC')
-                        ->groupBy('transaksi.id','wilayah.nama_wilayah','donatur.nama','users.nama','jenis_transaksi.jenis_transaksi','lembaga.nama_lembaga', 'status_transaksi.panzisda_status', 'transaksi.tanggal_transfer', 'status_transaksi.lazis_status', 'status_transaksi.komentar', 'status_transaksi.updated_at', 'status_transaksi.manajer_status')
+                        ->groupBy('transaksi.id','wilayah.nama_wilayah','donatur.nama','users.nama','jenis_transaksi.jenis_transaksi','lembaga.nama_lembaga', 'status_transaksi.panzisda_status', 'transaksi.tanggal_transfer', 'status_transaksi.lazis_status', 'status_transaksi.komentar', 'status_transaksi.updated_at', 'status_transaksi.manajer_status','transaksi.no_kuitansi','donatur.no_hp','donatur.alamat','status_transaksi.komentar')
                         ->get();
         } else if ($id == 3) {
             $transaksi      = DB::table('transaksi')
@@ -236,13 +236,13 @@ class LazisController extends Controller
                         ->join('donatur','transaksi.id_donatur','=','donatur.id')
                         ->join('status_transaksi', 'transaksi.id','=','status_transaksi.id_transaksi')
                         ->leftJoin('barang','barang.id_transaksi','=','transaksi.id')
-                        ->select('transaksi.id', 'wilayah.nama_wilayah', 'status_transaksi.komentar', 'transaksi.tanggal_transfer', 'donatur.nama as donatur', 'users.nama as user', 'jenis_transaksi.jenis_transaksi', 'lembaga.nama_lembaga as lembaga', DB::raw('CAST(SUM(detail_transaksi.jumlah) as UNSIGNED) as jumlah'), DB::raw('group_concat(paketzakat.nama_paket_zakat SEPARATOR ", ") as paket'), 'status_transaksi.panzisda_status', 'status_transaksi.lazis_status', 'status_transaksi.updated_at as update', 'status_transaksi.manajer_status')
+                        ->select('transaksi.id', 'wilayah.nama_wilayah', 'status_transaksi.komentar', 'transaksi.tanggal_transfer', 'donatur.nama as donatur', 'users.nama as user', 'jenis_transaksi.jenis_transaksi', 'lembaga.nama_lembaga as lembaga', DB::raw('CAST(SUM(detail_transaksi.jumlah) as UNSIGNED) as jumlah'), DB::raw('group_concat(paketzakat.nama_paket_zakat SEPARATOR ", ") as paket'), 'status_transaksi.panzisda_status', 'status_transaksi.lazis_status', 'status_transaksi.updated_at as update', 'status_transaksi.manajer_status','transaksi.no_kuitansi','donatur.no_hp','donatur.alamat','status_transaksi.komentar')
                         ->where('transaksi.id_lembaga', $id_lembaga)
                         ->where('status_transaksi.manajer_status', '!=', NULL)
                         ->where('status_transaksi.panzisda_status', '!=', NULL)
                         ->where('status_transaksi.lazis_status', NULL)
                         ->orderBy('transaksi.id', 'DESC')
-                        ->groupBy('transaksi.id','wilayah.nama_wilayah','donatur.nama','users.nama','jenis_transaksi.jenis_transaksi','lembaga.nama_lembaga', 'status_transaksi.panzisda_status', 'transaksi.tanggal_transfer', 'status_transaksi.lazis_status', 'status_transaksi.komentar', 'status_transaksi.updated_at', 'status_transaksi.manajer_status')
+                        ->groupBy('transaksi.id','wilayah.nama_wilayah','donatur.nama','users.nama','jenis_transaksi.jenis_transaksi','lembaga.nama_lembaga', 'status_transaksi.panzisda_status', 'transaksi.tanggal_transfer', 'status_transaksi.lazis_status', 'status_transaksi.komentar', 'status_transaksi.updated_at', 'status_transaksi.manajer_status','transaksi.no_kuitansi','donatur.no_hp','donatur.alamat','status_transaksi.komentar')
                         ->get();
         } else if ($id == 4) {
             $transaksi      = DB::table('transaksi')
@@ -255,12 +255,12 @@ class LazisController extends Controller
                         ->join('donatur','transaksi.id_donatur','=','donatur.id')
                         ->join('status_transaksi', 'transaksi.id','=','status_transaksi.id_transaksi')
                         ->leftJoin('barang','barang.id_transaksi','=','transaksi.id')
-                        ->select('transaksi.id', 'wilayah.nama_wilayah', 'status_transaksi.komentar', 'transaksi.tanggal_transfer', 'donatur.nama as donatur', 'users.nama as user', 'jenis_transaksi.jenis_transaksi', 'lembaga.nama_lembaga as lembaga', DB::raw('CAST(SUM(detail_transaksi.jumlah) as UNSIGNED) as jumlah'), DB::raw('group_concat(paketzakat.nama_paket_zakat SEPARATOR ", ") as paket'), 'status_transaksi.panzisda_status', 'status_transaksi.lazis_status', 'status_transaksi.updated_at as update', 'status_transaksi.manajer_status')
+                        ->select('transaksi.id', 'wilayah.nama_wilayah', 'status_transaksi.komentar', 'transaksi.tanggal_transfer', 'donatur.nama as donatur', 'users.nama as user', 'jenis_transaksi.jenis_transaksi', 'lembaga.nama_lembaga as lembaga', DB::raw('CAST(SUM(detail_transaksi.jumlah) as UNSIGNED) as jumlah'), DB::raw('group_concat(paketzakat.nama_paket_zakat SEPARATOR ", ") as paket'), 'status_transaksi.panzisda_status', 'status_transaksi.lazis_status', 'status_transaksi.updated_at as update', 'status_transaksi.manajer_status','transaksi.no_kuitansi','donatur.no_hp','donatur.alamat','status_transaksi.komentar')
                         ->where('transaksi.id_lembaga', $id_lembaga)
                         ->where('status_transaksi.manajer_status', '!=', NULL)
                         ->where('status_transaksi.panzisda_status', NULL)
                         ->orderBy('transaksi.id', 'DESC')
-                        ->groupBy('transaksi.id','wilayah.nama_wilayah','donatur.nama','users.nama','jenis_transaksi.jenis_transaksi','lembaga.nama_lembaga', 'status_transaksi.panzisda_status', 'transaksi.tanggal_transfer', 'status_transaksi.lazis_status', 'status_transaksi.komentar', 'status_transaksi.updated_at', 'status_transaksi.manajer_status')
+                        ->groupBy('transaksi.id','wilayah.nama_wilayah','donatur.nama','users.nama','jenis_transaksi.jenis_transaksi','lembaga.nama_lembaga', 'status_transaksi.panzisda_status', 'transaksi.tanggal_transfer', 'status_transaksi.lazis_status', 'status_transaksi.komentar', 'status_transaksi.updated_at', 'status_transaksi.manajer_status','transaksi.no_kuitansi','donatur.no_hp','donatur.alamat','status_transaksi.komentar')
                         ->get();
         } else {
             $transaksi      = DB::table('transaksi')
@@ -273,12 +273,12 @@ class LazisController extends Controller
                         ->join('donatur','transaksi.id_donatur','=','donatur.id')
                         ->join('status_transaksi', 'transaksi.id','=','status_transaksi.id_transaksi')
                         ->leftJoin('barang','barang.id_transaksi','=','transaksi.id')
-                        ->select('transaksi.id', 'wilayah.nama_wilayah', 'status_transaksi.komentar', 'transaksi.tanggal_transfer', 'donatur.nama as donatur', 'users.nama as user', 'jenis_transaksi.jenis_transaksi', 'lembaga.nama_lembaga as lembaga', DB::raw('CAST(SUM(detail_transaksi.jumlah) as UNSIGNED) as jumlah'), DB::raw('group_concat(paketzakat.nama_paket_zakat SEPARATOR ", ") as paket'), 'status_transaksi.panzisda_status', 'status_transaksi.lazis_status', 'status_transaksi.updated_at as update', 'status_transaksi.manajer_status')
+                        ->select('transaksi.id', 'wilayah.nama_wilayah', 'status_transaksi.komentar', 'transaksi.tanggal_transfer', 'donatur.nama as donatur', 'users.nama as user', 'jenis_transaksi.jenis_transaksi', 'lembaga.nama_lembaga as lembaga', DB::raw('CAST(SUM(detail_transaksi.jumlah) as UNSIGNED) as jumlah'), DB::raw('group_concat(paketzakat.nama_paket_zakat SEPARATOR ", ") as paket'), 'status_transaksi.panzisda_status', 'status_transaksi.lazis_status', 'status_transaksi.updated_at as update', 'status_transaksi.manajer_status','transaksi.no_kuitansi','donatur.no_hp','donatur.alamat','status_transaksi.komentar')
                         ->where('transaksi.id_lembaga', $id_lembaga)
                         ->where('status_transaksi.manajer_status', NULL)
                         ->orWhere('status_transaksi.updated_at', '!=', NULL)
                         ->orderBy('transaksi.id', 'DESC')
-                        ->groupBy('transaksi.id','wilayah.nama_wilayah','donatur.nama','users.nama','jenis_transaksi.jenis_transaksi','lembaga.nama_lembaga', 'status_transaksi.panzisda_status', 'transaksi.tanggal_transfer', 'status_transaksi.lazis_status', 'status_transaksi.komentar', 'status_transaksi.updated_at', 'status_transaksi.manajer_status')
+                        ->groupBy('transaksi.id','wilayah.nama_wilayah','donatur.nama','users.nama','jenis_transaksi.jenis_transaksi','lembaga.nama_lembaga', 'status_transaksi.panzisda_status', 'transaksi.tanggal_transfer', 'status_transaksi.lazis_status', 'status_transaksi.komentar', 'status_transaksi.updated_at', 'status_transaksi.manajer_status','transaksi.no_kuitansi','donatur.no_hp','donatur.alamat','status_transaksi.komentar')
                         ->get();
         }
         
@@ -286,7 +286,7 @@ class LazisController extends Controller
         ->addIndexColumn()
         ->addColumn('aksi', function($transaksi) {
             if ($transaksi->panzisda_status == NULL) {
-                $button = '<center><button type="button" name="detail" id="'.$transaksi->id.'" class="detail btn btn-secondary btn-xs" disabled>VERIFIKASI</button></center>';
+                $button = '<center><button type="button" name="detail" id="'.$transaksi->id.'" class="detail btn btn-secondary btn-xs" >DETAIL</button></center>';
             } else {
                 $button = '<center><button type="button" name="detail" id="'.$transaksi->id.'" class="detail btn btn-secondary btn-xs">VERIFIKASI</button></center>';
             }
@@ -565,7 +565,7 @@ class LazisController extends Controller
         $data['user_manajerarea']   = $this->user_manajerarea->where('id', Auth::user()->id)->first();
         $data['user_panzisda']      = $this->user_panzisda->where('id', Auth::user()->id)->first();
         $data['user_lazis']         = $this->user_lazis->where('id', Auth::user()->id)->first();
-        $data['user_panziswil']     = $this->user_panziswil->where('id', Auth::user()->id)->first();      
+        $data['user_panziswil']     = $this->user_panziswil->where('id', Auth::user()->id)->first();
         $data['lembaga']            = DB::table('lembaga')->join('role','role.id_lembaga','=','lembaga.id')->select('lembaga.nama_lembaga')->where('role.id_users', Auth::user()->id)->where('role.id_jabatan', 6)->first();
 
         return view('admin.lazis.laporan_distribusi', compact('data'));
@@ -618,5 +618,40 @@ class LazisController extends Controller
         return DataTables::of($data)
             ->addIndexColumn()
             ->make(true);
+    }
+
+    public function getDonatur()
+    {
+        $data['user']               = $this->user->where('id', Auth::user()->id)->first();
+        $data['user_duta']          = $this->user_duta->where('id', Auth::user()->id)->first();
+        $data['user_manajer']       = $this->user_manajer->where('id', Auth::user()->id)->first();
+        $data['user_manajerarea']   = $this->user_manajerarea->where('id', Auth::user()->id)->first();
+        $data['user_panzisda']      = $this->user_panzisda->where('id', Auth::user()->id)->first();
+        $data['user_lazis']         = $this->user_lazis->where('id', Auth::user()->id)->first();
+        $data['user_panziswil']     = $this->user_panziswil->where('id', Auth::user()->id)->first();
+        
+        return view('admin.lazis.donatur', compact('data'));
+    }
+
+    public function getDataDonatur()
+    {
+        $donatur = DB::table('donatur')->orderBy('donatur.nama', 'ASC')->orderBy('donatur.penghasilan', 'DESC')->get();
+        $donatur = $donatur->unique('nama', 'alamat');
+        
+        return DataTables::of($donatur)
+            ->addIndexColumn()
+            ->addColumn('aksi', function($donatur) {
+                $button = '<center><button type="button" name="detail" id="'.$donatur->id.'" class="detail btn btn-secondary btn-xs">Detail</button></center>';
+                return $button;
+            })
+            ->rawColumns(['aksi'])
+            ->make(true);
+    }
+
+    public function detailDonatur($id)
+    {
+        $data = \App\Models\Donatur::find($id);
+
+        return json_encode($data);
     }
 }

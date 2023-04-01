@@ -325,7 +325,7 @@
                 "sSearch": "Cari Data/Filter:",
             },
             ajax: {
-                url: "{{ url('manajer/donatur/getdata') }}",
+                url: "{{ route('manajer.duta.getDonatur') }}",
             },
             "columnDefs": [
                 {"className": "dt-center", "targets": [0, 1, 4, 5, 7]}

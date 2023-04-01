@@ -12,11 +12,11 @@
         <div class="col-md-4">
             <h3 class="box-title"><strong>Data Transaksi</strong></h3>
         </div>
-        <div class="col-md-8" style="text-align: right;">
+        {{--<div class="col-md-8" style="text-align: right;">
             <button type="button" class="btn btn-primary btn-xs mr-5" data-toggle="modal" data-target="#exportExcel1">
                 Export Data
             </button>
-        </div>
+        </div>--}}
     </div>
 
     <form class="form-horizontal">
@@ -42,17 +42,21 @@
                 <table id="tabel-transaksi" class="display" style="width: 100%">
                     <thead>
                         <tr class="bg-success">
-                            <th width="5%"> No </th>
-                            <th> Tgl Trf/Kirim </th>
-                            <th> Wilayah </th>
-                            <th> Muzakki </th>
-                            <th> Duta Zakat </th>
-                            <th> Lembaga </th>
-                            <th> Paket Zakat </th>
-                            <th> Jenis Transaksi </th>
-                            <th> Jumlah </th>
-                            <th> Status </th>
-                            <th> <center>Aksi</center> </th>
+                            <th width="5%">No</th>
+                            <th>No. Kuitansi</th>
+                            <th>Tgl Trf/Kirim</th>
+                            <th>Duta Zakat</th>
+                            <th>Wilayah</th>
+                            <th>Muzakki</th>
+                            <th>No. HP</th>
+                            <th>Alamat</th>
+                            <th>Lembaga</th>
+                            <th>Paket Zakat</th>
+                            <th>Jenis Transaksi</th>
+                            <th>Jumlah</th>
+                            <th>Status</th>
+                            <th>Catatan</th>
+                            <th><center>Aksi</center></th>
                         </tr>
                     </thead>
                     <tfoot>
@@ -64,7 +68,11 @@
                             <th></th>
                             <th></th>
                             <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
                             <th style="text-align:right">TOTAL:</th>
+                            <th></th>
                             <th></th>
                             <th></th>
                             <th></th>
@@ -345,12 +353,12 @@
         var asal = <?php echo json_encode($data['user']) ?>;
 
         var table = $('#tabel-transaksi').DataTable({
-            dom: 'lfrtip',
-            // buttons: [
-            //     {name: 'excelHtml5', extend: 'excelHtml5', text: 'Export to EXCEL', messageTop: 'Laporan Transaksi Duta Zakat - Kabupaten/Kota '+asal.nama_wilayah, className: 'btn btn-default btn-sm', pageSize: 'A4', autoFilter: true, customize: function ( xlsx ){ var sheet = xlsx.xl.worksheets['sheet1.xml']; $('row c', sheet).attr( 's', '25' ); }, exportOptions: { columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ] }},
-            //     {name: 'pdfHtml5', extend: 'pdfHtml5', text: 'Export to PDF', messageTop: 'Laporan Transaksi Duta Zakat - Kabupaten/Kota '+asal.nama_wilayah, className: 'btn btn-default btn-sm', pageSize: 'A4', exportOptions: { columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ] }},
-            //     {name: 'print', extend: 'print', text: 'PRINT', messageTop: 'Laporan Transaksi Duta Zakat - Kabupaten/Kota '+asal.nama_wilayah, className: 'btn btn-default btn-sm', pageSize: 'A4', exportOptions: { columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ] }}
-            // ],
+            dom: 'Blfrtip',
+            buttons: [
+                {name: 'excelHtml5', extend: 'excelHtml5', text: 'Export to EXCEL', messageTop: 'Laporan Transaksi Duta Zakat - Kabupaten/Kota '+asal.nama_wilayah, className: 'btn btn-default btn-sm', pageSize: 'A4', autoFilter: true, customize: function ( xlsx ){ var sheet = xlsx.xl.worksheets['sheet1.xml']; $('row c', sheet).attr( 's', '25' ); }, exportOptions: { columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 ] }},
+                {name: 'pdfHtml5', extend: 'pdfHtml5', text: 'Export to PDF', messageTop: 'Laporan Transaksi Duta Zakat - Kabupaten/Kota '+asal.nama_wilayah, className: 'btn btn-default btn-sm', pageSize: 'A4', exportOptions: { columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 ] }},
+                {name: 'print', extend: 'print', text: 'PRINT', messageTop: 'Laporan Transaksi Duta Zakat - Kabupaten/Kota '+asal.nama_wilayah, className: 'btn btn-default btn-sm', pageSize: 'A4', exportOptions: { columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 ] }}
+            ],
             "language": {
                 "sEmptyTable": "DATA KOSONG ATAU TIDAK DITEMUKAN !",
                 "sLengthMenu": "Tampilkan _MENU_ records",
@@ -359,9 +367,9 @@
             ajax: {
                 url: "{{ route('lazis.getTransaksi', '') }}"+"/0",
             },
-            "columnDefs": [
-                {"className": "dt-center", "targets": [0, 1, 5, 7, 8, 9, 10]}
-            ],
+            // "columnDefs": [
+            //     {"className": "dt-center", "targets": [0, 1, 5, 7, 8, 9, 10]}
+            // ],
             // "order": [[ 8, "asc" ], [ 1, "desc" ]],
             columns: [{
                 data: "id",
@@ -370,8 +378,16 @@
                 }
             },
             {
+                data: 'no_kuitansi',
+                name: 'no_kuitansi',
+            },
+            {
                 data: 'tanggal_transfer',
                 name: 'tanggal_transfer',
+            },
+            {
+                data: 'user',
+                name: 'user',
             },
             {
                 data: 'nama_wilayah',
@@ -382,8 +398,12 @@
                 name: 'donatur',
             },
             {
-                data: 'user',
-                name: 'user',
+                data: 'no_hp',
+                name: 'no_hp',
+            },
+            {
+                data: 'alamat',
+                name: 'alamat',
             },
             {
                 data: 'lembaga',
@@ -406,13 +426,17 @@
                 name: 'lazis_status',
             },
             {
+                data: 'komentar',
+                name: 'komentar',
+            },
+            {
                 data: 'aksi',
                 name: 'aksi',
             }],
             footerCallback: function( tfoot, data, start, end, display ) {
                 var api = this.api();
-                $(api.column(8).footer()).html(
-                    api.column(8).data().reduce(function ( a, b ) {
+                $(api.column(11).footer()).html(
+                    api.column(11).data().reduce(function ( a, b ) {
                         a = parseInt(a.toString().replace(/,.*|[^0-9]/g, ''), 10);
                         b = parseInt(b.toString().replace(/,.*|[^0-9]/g, ''), 10);
                         total = a+b;
@@ -529,7 +553,7 @@
                         $('#komentar_manajer').val(data.komentar);
                     }
 
-                    if (data.lazis_status == null) {
+                    if (data.panzisda_status != null) {
                         $('#btnValid').show();
                         $('#btnNonValid').show();
                     } else {

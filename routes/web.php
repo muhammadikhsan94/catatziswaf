@@ -292,6 +292,11 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 		Route::get('/laporan/realisasi-paketziswaf/getdata/{id}', [App\Http\Controllers\LazisController::class, 'getDataLaporanRealisasiPaketZiswaf'])->name('lazis.getDataLaporanRealisasiPaketZiswaf');
 		Route::get('/laporan/distribusi', [App\Http\Controllers\LazisController::class, 'getLaporanDistribusi'])->name('lazis.laporanRealisasiDistribusi');
 		Route::get('/laporan/distribusi/getdata', [App\Http\Controllers\LazisController::class, 'getDataLaporanDistribusi'])->name('lazis.getDataLaporanDistribusi');
+
+		//DONATUR
+		Route::get('/donatur', [App\Http\Controllers\LazisController::class, 'getDonatur'])->name('lazis.donatur');
+		Route::get('/donatur/getdata', [App\Http\Controllers\LazisController::class, 'getDataDonatur'])->name('lazis.getDonatur');
+		Route::get('/donatur/detail/{id}', [App\Http\Controllers\LazisController::class, 'detailDonatur'])->name('lazis.detailDonatur');
 	});
 
     Route::get('/logout', [App\Http\Controllers\HomeController::class, 'logout'])->name('logout');

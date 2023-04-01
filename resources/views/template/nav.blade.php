@@ -184,6 +184,7 @@
                 <ul class="treeview-menu">
                     <li><a href="{{route('lazis.beranda')}}"><i class="fa fa-home"></i>  <span>Beranda</span></a></li>
                     <li><a href="{{route('lazis.transaksi')}}"><i class="fa fa-shopping-cart"></i>  <span>Kelola Transaksi</span></a></li>
+                    <li><a href="{{route('lazis.donatur')}}"><i class="fa fa-users"></i>  <span>Data Donatur</span></a></li>
                     <li class="treeview">
                         <a href="#">
                             <i class="fa fa-list"></i>  <span>Kelola Laporan</span>
