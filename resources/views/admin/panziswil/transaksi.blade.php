@@ -326,7 +326,7 @@
         var table = $('#tabel-transaksi').DataTable({
             dom: 'Blfrtip',
             buttons: [
-                {name: 'excelHtml5', extend: 'excelHtml5', text: 'Export to Excel', messageTop: 'Data Transaksi', className: 'btn btn-default btn-sm', pageSize: 'A4', autoFilter: true, customize: function ( xlsx ){ var sheet = xlsx.xl.worksheets['sheet1.xml']; $('row c', sheet).attr( 's', '25' ); }, footer: true},
+                {name: 'excelHtml5', extend: 'excelHtml5', text: 'Export to Excel', messageTop: 'Data Transaksi', className: 'btn btn-default btn-sm', pageSize: 'A4', autoFilter: true, customize: function ( xlsx ){ var sheet = xlsx.xl.worksheets['sheet1.xml']; $('row c', sheet).attr( 's', '25' ); }, footer: true, exportOptions: { orthogonal: 'export' }},
             ],
             "language": {
                 "sEmptyTable": "DATA KOSONG ATAU TIDAK DITEMUKAN !",
@@ -373,6 +373,11 @@
             {
                 data: 'jumlah',
                 name: 'jumlah',
+                render: function (data, type, row) {
+                    return type === 'export' ?
+                        data.replace( /[Rp.]/g, '' ) :
+                        data;
+                }
             },
             {
                 data: 'panzisda_status',
