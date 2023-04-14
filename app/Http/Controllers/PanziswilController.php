@@ -1695,11 +1695,14 @@ class PanziswilController extends Controller
 							$name = 'izi';
 						} else if ($item3->nama_lembaga == 'LAZDAI' OR $item3->nama_lembaga == 'lazdai' or $item3->nama_lembaga == 'Lazdai') {
 							$name = 'lazdai';
-						} else if ($item3->nama_lembaga == 'DANA MANDIRI' OR $item3->nama_lembaga == 'dana mandiri' or $item3->nama_lembaga == 'Dana Mandiri') {
-							$name = 'dana_mandiri';
 						} else {
-							$name = 'yayasan';
+							$name = 'laz_ddii';
 						}
+						// } else if ($item3->nama_lembaga == 'DANA MANDIRI' OR $item3->nama_lembaga == 'dana mandiri' or $item3->nama_lembaga == 'Dana Mandiri') {
+						// 	$name = 'dana_mandiri';
+						// } else {
+						// 	$name = 'yayasan';
+						// }
 
 						$transaksi2   = DB::table('transaksi')
 									->leftJoin('users','users.id','=','transaksi.id_users')
@@ -1721,9 +1724,9 @@ class PanziswilController extends Controller
 						$count = $count+1;
 					}
 
-					if(empty($dummy['yayasan'])) {
-						$dummy['yayasan'] = 0;
-					}
+					// if(empty($dummy['yayasan'])) {
+					// 	$dummy['yayasan'] = 0;
+					// }
 
 					$dummy['jumlah'] = $total;
 					$temp[] = $dummy;
@@ -1772,11 +1775,14 @@ class PanziswilController extends Controller
 							$name = 'izi';
 						} else if ($item3->nama_lembaga == 'LAZDAI' OR $item3->nama_lembaga == 'lazdai' or $item3->nama_lembaga == 'Lazdai') {
 							$name = 'lazdai';
-						} else if ($item3->nama_lembaga == 'DANA MANDIRI' OR $item3->nama_lembaga == 'dana mandiri' or $item3->nama_lembaga == 'Dana Mandiri') {
-							$name = 'dana_mandiri';
 						} else {
-							$name = 'yayasan';
+							$name = 'laz_ddii';
 						}
+						// } else if ($item3->nama_lembaga == 'DANA MANDIRI' OR $item3->nama_lembaga == 'dana mandiri' or $item3->nama_lembaga == 'Dana Mandiri') {
+						// 	$name = 'dana_mandiri';
+						// } else {
+						// 	$name = 'yayasan';
+						// }
 
 						$transaksi2   = DB::table('transaksi')
 									->leftJoin('users','users.id','=','transaksi.id_users')
@@ -1798,9 +1804,9 @@ class PanziswilController extends Controller
 						$count = $count+1;
 					}
 
-					if(empty($dummy['yayasan'])) {
-						$dummy['yayasan'] = 0;
-					}
+					// if(empty($dummy['yayasan'])) {
+					// 	$dummy['yayasan'] = 0;
+					// }
 
 					$dummy['jumlah'] = $total;
 					$temp[] = $dummy;

@@ -35,14 +35,15 @@
                             <th rowspan="2" width="5%"> No </th>
                             <th rowspan="2"> Wilayah </th>
                             <th rowspan="2"> Paket Ziswaf </th>
-                            <th colspan="4"> <center>LEMBAGA</center> </th>
+                            <th colspan="3"> <center>LEMBAGA</center> </th>
                             <th rowspan="2" width="13%"> Jumlah </th>
                         </tr>
                         <tr class="bg-success">
                             <th width="13%"> IZI </th>
                             <th width="13%"> LAZDAI </th>
-                            <th width="13%"> YAYASAN </th>
-                            <th width="13%"> DANA MANDIRI </th>
+                            <th width="13%"> LAZ DDII </th>
+                            <!-- <th width="13%"> YAYASAN </th> -->
+                            <!-- <th width="13%"> DANA MANDIRI </th> -->
                         </tr>
                     </thead>
                     <tfoot>
@@ -54,7 +55,7 @@
                             <th style="text-align: right"></th>
                             <th style="text-align: right"></th>
                             <th style="text-align: right"></th>
-                            <th style="text-align: right"></th>
+                            <!-- <th style="text-align: right"></th> -->
                         </tr>
                     </tfoot>
                 </table>
@@ -98,7 +99,7 @@
             },
             "columnDefs": [
                 {"className": "dt-center", "targets": [0]},
-                {"className": "dt-right", "targets": [3, 4, 5, 6, 7]},
+                {"className": "dt-right", "targets": [3, 4, 5, 6]},
             ],
             ajax: {
                 url: "",
@@ -111,8 +112,8 @@
                 { data: 'paket' },
                 { data: 'izi', render: $.fn.dataTable.render.number( ',', '.', 0 ) },
                 { data: 'lazdai', render: $.fn.dataTable.render.number( ',', '.', 0 ) },
-                { data: 'yayasan', render: $.fn.dataTable.render.number( ',', '.', 0 ) },
-                { data: 'dana_mandiri', render: $.fn.dataTable.render.number( ',', '.', 0 ) },
+                { data: 'laz_ddii', render: $.fn.dataTable.render.number( ',', '.', 0 ) },
+                // { data: 'dana_mandiri', render: $.fn.dataTable.render.number( ',', '.', 0 ) },
                 { data: 'jumlah', render: $.fn.dataTable.render.number( ',', '.', 0 ) },
             ],
             'rowsGroup': [1],
@@ -150,20 +151,20 @@
                         return convertToRupiah(total);
                     }, 0)
                 );
-                $(api.column(7).footer()).html(
-                    api.column(7).data().reduce(function ( a, b ) {
-                        a = parseInt(a.toString().replace(/,.*|[^0-9]/g, ''), 10);
-                        b = parseInt(b.toString().replace(/,.*|[^0-9]/g, ''), 10);
-                        total = a+b;
-                        return convertToRupiah(total);
-                    }, 0)
-                );
+                // $(api.column(7).footer()).html(
+                //     api.column(7).data().reduce(function ( a, b ) {
+                //         a = parseInt(a.toString().replace(/,.*|[^0-9]/g, ''), 10);
+                //         b = parseInt(b.toString().replace(/,.*|[^0-9]/g, ''), 10);
+                //         total = a+b;
+                //         return convertToRupiah(total);
+                //     }, 0)
+                // );
             }
         });
 
         $('select').selectpicker();
         $('#pilih_wilayah').change(function() {
-            table.ajax.url('{{ env('APP_URL') }}'+'/panziswil/laporan/realisasi-paketziswaf/getdata/'+$(this).val()).load();
+            table.ajax.url("{{ route('panziswil.getDataLaporanRealisasiPaketZiswaf','') }}"+"/"+$(this).val()).load();
         });
         $('#pilih_wilayah').trigger("change");
     });
